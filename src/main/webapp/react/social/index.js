@@ -1,5 +1,5 @@
-import ApplicantList from "./applicants/applicant-list";
-import ApplicantFormEditor from "./applicants/applicant-form-editor";
+// import ApplicantList from "./applicants/applicant-list";
+// import ApplicantFormEditor from "./applicants/applicant-form-editor";
 import JobList from "./jobs/job-list";
 import JobFormEditor from "./jobs/job-form-editor";
 const {HashRouter, Route} = window.ReactRouterDOM; 

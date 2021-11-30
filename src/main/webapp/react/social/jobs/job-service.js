@@ -1,4 +1,3 @@
-// TODO: declare URL where server listens for HTTP requests
 const JOBS_URL = "http://localhost:8080/api/jobs"
 
 export const findAllJobs = () =>
@@ -34,7 +33,7 @@ export const updateJob = (id, job) =>
     })
         .then(response => response.json())
 
-// TODO: export all functions as the API to this service
+
 export default {
     findAllJobs, findJobById, deleteJob, createJob, updateJob
 }

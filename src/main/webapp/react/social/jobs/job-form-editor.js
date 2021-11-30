@@ -43,19 +43,10 @@ const JobFormEditor = () => {
                         ({...job, title: e.target.value}))}
                        value={job.title}/><br/>
 
-                <button
-                    onClick={() => {
-                            history.back()}}>
-                        Cancel
-                </button>
-                <button
-                    onClick={() => deleteJob(job.id)}>
-                        Delete
-                </button>
-                <button onClick={() => updateJob(job.id, job)}
-                        className="btn btn-primary">Save</button>
-            <button onClick={() => createJob(job)}
-                    className="btn btn-success">Create</button>
+            <button className="btn btn-warning" onClick={() => history.back()}>Cancel</button>
+            <button className="btn btn-danger" onClick={() => deleteJob(job.id)}>Delete</button>
+            <button className="btn btn-primary" onClick={() => updateJob(job.id, job)}>Save</button>
+            <button className="btn btn-success" onClick={() => createJob(job)}>Create</button>
         </div>
     )
 }
