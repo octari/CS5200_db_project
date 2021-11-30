@@ -47,19 +47,11 @@ const ApplicantFormEditor = () => {
                     setApplicant(applicant =>
                         ({...applicant, recruiterId: e.target.value}))}
                     value={applicant.recruiterId}/><br/>
-                <button
-                    onClick={() => {
-                            history.back()}}>
-                        Cancel
-                </button>
-                <button
-                    onClick={() => deleteApplicant(applicant.id)}>
-                        Delete
-                </button>
-                <button onClick={() => updateApplicant(applicant.id, applicant)}
-                        className="btn btn-primary">Save</button>
-            <button onClick={() => createApplicant(applicant)}
-                    className="btn btn-success">Create</button>
+
+            <button className="btn btn-warning" onClick={() => history.back()}>Cancel</button>
+            <button className="btn btn-danger" onClick={() => deleteApplicant(applicant.id)}>Delete</button>
+            <button className="btn btn-primary" onClick={() => updateApplicant(applicant.id, applicant)}>Save</button>
+            <button className="btn btn-success" onClick={() => createApplicant(applicant)}>Create</button>
         </div>
     )
 }
