@@ -19,7 +19,7 @@ const ApplicantFormEditor = () => {
         const createApplicant = (applicant) =>
             applicantService.createApplicant(applicant)
                 .then(() => history.back())
-        const updateApplicant = (id, applicant) =>
+        const updateApplicant = (id, newApplicant) =>
             applicantService.updateApplicant(id, newApplicant)
                 .then(() => history.back())
         return (
@@ -42,7 +42,7 @@ const ApplicantFormEditor = () => {
                     setApplicant(applicant =>
                         ({...applicant, email: e.target.value}))}
                        value={applicant.email}/><br/>
-                <label>Password</label>
+                <label>RecruiterId</label>
                 <input onChange={(e) =>
                     setApplicant(applicant =>
                         ({...applicant, recruiterId: e.target.value}))}

@@ -1,15 +1,15 @@
-import UserList from "./applicants/applicant-list";
-import UserFormEditor from "./applicants/applicant-form-editor";
+import ApplicantList from "./applicants/applicant-list";
+import ApplicantFormEditor from "./applicants/applicant-form-editor";
 const {HashRouter, Route} = window.ReactRouterDOM; 
 const App = () => {
     return (
         <div className="container-fluid">
             <HashRouter>
                 <Route path={["/applicants", "/"]} exact={true}>
-                    <UserList/>
+                    <ApplicantList/>
                 </Route>
                 <Route path="/applicants/:id" exact={true}>
-                    <UserFormEditor/>
+                    <ApplicantFormEditor/>
                 </Route>
             </HashRouter>
         </div>

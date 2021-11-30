@@ -18,7 +18,7 @@ public class ApplicantRestOrmDao {
   }
 
   @GetMapping("/api/applicants")
-  public List<Applicant> findAllApplicantrs() {
+  public List<Applicant> findAllApplicants() {
     return applicantRepository.findAllApplicants();
   }
 

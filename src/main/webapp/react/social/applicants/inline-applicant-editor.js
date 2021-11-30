@@ -28,8 +28,8 @@ const InlineApplicantEditor = ({applicant, deleteApplicant, updateApplicant}) =>
                             onChange={(e)=>setApplicantCopy(applicantCopy => ({...applicantCopy, email: e.target.value}))}/>
                     </div>
                     <div className="col-1">
-                        <Link to={`/Applicants/${applicantCopy.id}/blogs`}>
-                            Blogs
+                        <Link to={`/Applicants/${applicantCopy.id}`}>
+
                         </Link>
                     </div>
                     <div className="col-2">
@@ -64,8 +64,8 @@ const InlineApplicantEditor = ({applicant, deleteApplicant, updateApplicant}) =>
                         </Link>
                     </div>
                     <div className="col-1">
-                        <Link to={`/applicants/${applicantCopy.id}/applications`}>
-                            Applications
+                        <Link to={`/applicants/${applicantCopy.id}`}>
+
                         </Link>
                     </div>
                     <div className="col-2">
