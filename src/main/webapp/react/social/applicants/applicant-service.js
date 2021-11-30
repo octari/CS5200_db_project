@@ -1,4 +1,4 @@
-// TODO: declare URL where server listens for HTTP requests
+
 const APPLICANTS_URL = "http://localhost:8080/api/applicants"
 
 export const findAllApplicants = () =>
