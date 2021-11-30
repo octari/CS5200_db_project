@@ -1,6 +1,6 @@
-
 import CompanyList from "./companies/company-list";
 import CompanyFormEditor from "./companies/company-form-editor";
+
 
 const {HashRouter, Route} = window.ReactRouterDOM; 
 const App = () => {
@@ -15,7 +15,6 @@ const App = () => {
                 </Route>
             </HashRouter>
         </div>
-
     );
 }
 
