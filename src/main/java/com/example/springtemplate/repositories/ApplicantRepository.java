@@ -12,7 +12,7 @@ public interface ApplicantRepository
   @Query(value = "SELECT * FROM applicants",
           nativeQuery = true)
   public List<Applicant> findAllApplicants();
-  @Query(value = "SELECT * FROM users WHERE id=:applicantId",
+  @Query(value = "SELECT * FROM applicants WHERE id=:applicantId",
           nativeQuery = true)
   public Applicant findApplicantById(@Param("applicantId") Integer id);
 
