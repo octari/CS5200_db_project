@@ -6,7 +6,7 @@ const Applicants = () => {
     const [applicants, setApplicants] = useState([])
     const [newApplicant, setNewApplicant] = useState({})
     const createApplicant = (applicant) =>
-        fetch(`https://wbdv-generic-server.herokuapp.com/api/jannunzi/applicants`, {
+        fetch(`https://wbdv-generic-server.herokuapp.com/api/jobs/applicants`, {
             method: 'POST',
             body: JSON.stringify(applicant),
             headers: {'content-type': 'application/json'}
@@ -22,7 +22,7 @@ const Applicants = () => {
             .then(response => response.json())
             .then(applicants => setApplicants(applicants))
     const deleteApplicant = (id) =>
-        fetch(`https://wbdv-generic-server.herokuapp.com/api/jannunzi/applicants/${id}`, {
+        fetch(`https://wbdv-generic-server.herokuapp.com/api/jobs/applicants/${id}`, {
             method: "DELETE"
         })
             .then(response => response.json())
