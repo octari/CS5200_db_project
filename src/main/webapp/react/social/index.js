@@ -4,7 +4,8 @@ import JobList from "./jobs/job-list";
 import JobFormEditor from "./jobs/job-form-editor";
 import CompanyList from "./companies/company-list";
 import CompanyFormEditor from "./companies/company-form-editor";
-
+import ApplicationList from "./applications/application-list";
+import ApplicationFormEditor from "./applications/application-form-editor";
 
 const {HashRouter, Route} = window.ReactRouterDOM; 
 const App = () => {
@@ -32,6 +33,14 @@ const App = () => {
                 </Route>
                 <Route path="/companies/:id" exact={true}>
                     <CompanyFormEditor/>
+                </Route>
+            </HashRouter>
+            <HashRouter>
+                <Route path={["/applications", "/"]} exact={true}>
+                    <ApplicationList/>
+                </Route>
+                <Route path="/applications/:id" exact={true}>
+                    <ApplicationFormEditor/>
                 </Route>
             </HashRouter>
         </div>
