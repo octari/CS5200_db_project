@@ -54,12 +54,12 @@ const ApplicationFormEditor = () => {
                     ({...application, jobId: e.target.value}))}
                    value={application.jobId}/><br/>
 
-            <button
+            <button className="btn btn-warning"
                 onClick={() => {
                     history.back()}}>
                 Cancel
             </button>
-            <button
+            <button className="btn btn-danger"
                 onClick={() => deleteApplication(application.id)}>
                 Delete
             </button>
