@@ -38,7 +38,8 @@ const ApplicationFormEditor = () => {
                     ({...application, appliedPosition: e.target.value}))}
                    value={application.appliedPosition}/><br/>
             <label>Applied Date</label>
-            <input onChange={(e) =>
+
+            <input type="datetime-local" onChange={(e) =>
                 setApplication(application =>
                     ({...application, appliedDate: e.target.value}))}
                    value={application.appliedDate}/><br/>

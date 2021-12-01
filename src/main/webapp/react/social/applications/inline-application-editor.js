@@ -44,18 +44,19 @@ const InlineApplicationEditor = ({application, deleteApplication, updateApplicat
                 !editing &&
                 <div className="row">
                     <div className="col">
-                        <Link to={`/users/${applicationCopy.id}`}>
+                        <Link to={`/applications/${applicationCopy.id}`}>
                             {applicationCopy.applicantName}
                         </Link>
                     </div>
                     <div className="col">
-                        <Link to={`/users/${applicationCopy.id}`}>
+                        <Link to={`/applications/${applicationCopy.id}`}>
                             {applicationCopy.appliedPosition}
                         </Link>
                     </div>
                     <div className="col">
-                        <Link to={`/users/${applicationCopy.id}`}>
-                            {applicationCopy.appliedDate}
+                        <Link to={`/applications/${applicationCopy.id}`}>
+                            {/*{applicationCopy.appliedDate}*/}
+                            {new Date()}
                         </Link>
                     </div>
                     <div className="col-2">
