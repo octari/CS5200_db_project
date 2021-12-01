@@ -38,11 +38,22 @@ const ApplicationFormEditor = () => {
                     ({...application, appliedPosition: e.target.value}))}
                    value={application.appliedPosition}/><br/>
             <label>Applied Date</label>
-
             <input type="datetime-local" onChange={(e) =>
                 setApplication(application =>
                     ({...application, appliedDate: e.target.value}))}
                    value={application.appliedDate}/><br/>
+
+            <label>Applicant Id</label>
+            <input onChange={(e) =>
+                setApplication(application =>
+                    ({...application, applicantId: e.target.value}))}
+                   value={application.applicantId}/><br/>
+            <label>Job Id</label>
+            <input onChange={(e) =>
+                setApplication(application =>
+                    ({...application, jobId: e.target.value}))}
+                   value={application.jobId}/><br/>
+
             <button
                 onClick={() => {
                     history.back()}}>

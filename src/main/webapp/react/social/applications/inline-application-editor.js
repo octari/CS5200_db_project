@@ -59,6 +59,16 @@ const InlineApplicationEditor = ({application, deleteApplication, updateApplicat
                             {new Date()}
                         </Link>
                     </div>
+                    <div className="col">
+                        <Link to={`/applications/${applicationCopy.id}`}>
+                            {applicationCopy.applicantId}
+                        </Link>
+                    </div>
+                    <div className="col">
+                        <Link to={`/applications/${applicationCopy.id}`}>
+                            {applicationCopy.jobId}
+                        </Link>
+                    </div>
                     <div className="col-2">
                         <i className="fas fa-cog fa-2x float-right"
                            onClick={() => setEditing(true)}></i>
