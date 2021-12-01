@@ -32,33 +32,28 @@ const ApplicationFormEditor = () => {
                 setApplication(applicant =>
                     ({...application, applicantName: e.target.value}))}
                    value={application.applicantName}/><br/>
-            <label>Last Name</label>
+            <label>Applied Position</label>
             <input onChange={(e) =>
-                setApplication(user =>
-                    ({...user, lastName: e.target.value}))}
-                   value={user.lastName}/><br/>
-            <label>Username</label>
+                setApplication(application =>
+                    ({...application, appliedPosition: e.target.value}))}
+                   value={application.appliedPosition}/><br/>
+            <label>Applied Date</label>
             <input onChange={(e) =>
-                setUser(user =>
-                    ({...user, username: e.target.value}))}
-                   value={user.username}/><br/>
-            <label>Password</label>
-            <input onChange={(e) =>
-                setUser(user =>
-                    ({...user, password: e.target.value}))}
-                   value={user.password}/><br/>
+                setApplication(application =>
+                    ({...application, appliedDate: e.target.value}))}
+                   value={application.appliedDate}/><br/>
             <button
                 onClick={() => {
                     history.back()}}>
                 Cancel
             </button>
             <button
-                onClick={() => deleteUser(user.id)}>
+                onClick={() => deleteApplication(application.id)}>
                 Delete
             </button>
-            <button onClick={() => updateUser(user.id, user)}
+            <button onClick={() => updateApplication(application.id, application)}
                     className="btn btn-primary">Save</button>
-            <button onClick={() => createUser(user)}
+            <button onClick={() => createApplication(application)}
                     className="btn btn-success">Create</button>
         </div>
     )

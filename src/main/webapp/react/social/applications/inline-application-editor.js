@@ -1,8 +1,8 @@
 const {useState, useEffect } = React;
 const {Link} = window.ReactRouterDOM;
 
-const InlineUserEditor = ({user, deleteUser, updateUser}) => {
-    const [userCopy, setUserCopy] = useState(user)
+const InlineApplicationEditor = ({application, deleteApplication, updateApplication}) => {
+    const [applicationCopy, setApplicationCopy] = useState(application)
     const [editing, setEditing] = useState(false)
     return(
         <div>
@@ -12,36 +12,31 @@ const InlineUserEditor = ({user, deleteUser, updateUser}) => {
                     <div className="col">
                         <input
                             className="form-control"
-                            value={userCopy.firstName}
-                            onChange={(e)=>setUserCopy(userCopy => ({...userCopy, firstName: e.target.value}))}/>
+                            value={applicationCopy.applicantName}
+                            onChange={(e)=>setApplicationCopy(applicationCopy => ({...applicationCopy, applicantName: e.target.value}))}/>
                     </div>
                     <div className="col">
                         <input
                             className="form-control"
-                            value={userCopy.lastName}
-                            onChange={(e)=>setUserCopy(userCopy => ({...userCopy, lastName: e.target.value}))}/>
+                            value={applicationCopy.appliedPosition}
+                            onChange={(e)=>setApplicationCopy(application => ({...application, appliedPosition: e.target.value}))}/>
                     </div>
                     <div className="col">
                         <input
                             className="form-control"
-                            value={userCopy.username}
-                            onChange={(e)=>setUserCopy(userCopy => ({...userCopy, username: e.target.value}))}/>
-                    </div>
-                    <div className="col-1">
-                        <Link to={`/users/${userCopy.id}/blogs`}>
-                            Blogs
-                        </Link>
+                            value={applicationCopy.appliedDate}
+                            onChange={(e)=>setApplicationCopy(applicationCopy => ({...applicationCopy, appliedDate: e.target.value}))}/>
                     </div>
                     <div className="col-2">
                         <i className="fas fa-2x fa-check float-right margin-left-10px"
                            onClick={() => {
                                setEditing(false)
-                               updateUser(userCopy.id, userCopy)
+                               updateApplication(applicationCopy.id, applicationCopy)
                            }}></i>
                         <i className="fas fa-2x fa-undo float-right margin-left-10px"
                            onClick={() => setEditing(false)}></i>
                         <i className="fas fa-2x fa-trash float-right margin-left-10px"
-                           onClick={() => deleteUser(user.id)}></i>
+                           onClick={() => deleteApplication(application.id)}></i>
                     </div>
                 </div>
             }
@@ -49,23 +44,18 @@ const InlineUserEditor = ({user, deleteUser, updateUser}) => {
                 !editing &&
                 <div className="row">
                     <div className="col">
-                        <Link to={`/users/${userCopy.id}`}>
-                            {userCopy.firstName}
+                        <Link to={`/users/${applicationCopy.id}`}>
+                            {applicationCopy.applicantName}
                         </Link>
                     </div>
                     <div className="col">
-                        <Link to={`/users/${userCopy.id}`}>
-                            {userCopy.lastName}
+                        <Link to={`/users/${applicationCopy.id}`}>
+                            {applicationCopy.appliedPosition}
                         </Link>
                     </div>
                     <div className="col">
-                        <Link to={`/users/${userCopy.id}`}>
-                            {userCopy.username}
-                        </Link>
-                    </div>
-                    <div className="col-1">
-                        <Link to={`/users/${userCopy.id}/blogs`}>
-                            Blogs
+                        <Link to={`/users/${applicationCopy.id}`}>
+                            {applicationCopy.appliedDate}
                         </Link>
                     </div>
                     <div className="col-2">
@@ -78,4 +68,4 @@ const InlineUserEditor = ({user, deleteUser, updateUser}) => {
     )
 }
 
-export default InlineUserEditor;
+export default InlineApplicationEditor;
