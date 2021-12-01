@@ -27,8 +27,7 @@ const ApplicantList = () => {
                                 {applicant.id},
                             {applicant.firstName},
                             {applicant.lastName},
-                            {applicant.email},
-                            {applicant.recruiterId}
+                            {applicant.email}
                             </Link>
                         </li>)
                 }
