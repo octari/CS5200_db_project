@@ -27,6 +27,18 @@ const InlineApplicationEditor = ({application, deleteApplication, updateApplicat
                             value={applicationCopy.appliedDate}
                             onChange={(e)=>setApplicationCopy(applicationCopy => ({...applicationCopy, appliedDate: e.target.value}))}/>
                     </div>
+                    <div className="col">
+                        <input
+                            className="form-control"
+                            value={applicationCopy.applicantId}
+                            onChange={(e)=>setApplicationCopy(applicationCopy => ({...applicationCopy, applicantId: e.target.value}))}/>
+                    </div>
+                    <div className="col">
+                        <input
+                            className="form-control"
+                            value={applicationCopy.jobId}
+                            onChange={(e)=>setApplicationCopy(applicationCopy => ({...applicationCopy, jobId: e.target.value}))}/>
+                    </div>
                     <div className="col-2">
                         <i className="fas fa-2x fa-check float-right margin-left-10px"
                            onClick={() => {
