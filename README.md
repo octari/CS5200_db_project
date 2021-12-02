@@ -17,7 +17,7 @@ Our project involves showing the relationships between different databases in re
 # 4. Link to the latest data model as a single UML class diagram. The UML class diagram should be a single PDF document called db_design_final_project_UML.pdf and linked from the README
 
 UML Diagram PDF Link:
-[db_design_final_project_UML.pdf](https://github.com/loraong/CS5200_final_project/files/7575485/db_design_final_project_UML.pdf)
+[db_design_final_project_UML.pdf](https://github.com/octari/CS5200_db_project/blob/main/CS5200%20Final%20Project%20UML%20Diagram.pdf)
 
 # 5. Description of user data model
 
