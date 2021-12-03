@@ -14,13 +14,17 @@ public class ApplicantOrmDao {
     @Autowired
     ApplicantRepository applicantRepository;
 
-    @GetMapping("/orm/applicants/create/{fn}/{ln}/{em}/{re}")
+    @GetMapping("/orm/applicants/create/{fn}/{ln}/{un}/{ps}/{em}/{ph}/{re}/{db}")
     public Applicant createRecruiter(
             @PathVariable("fn")String first,
             @PathVariable("ln")String last,
+            @PathVariable("un")String username,
+            @PathVariable("ps")String password,
             @PathVariable("em")String email,
-            @PathVariable("re")Integer recruiterId) {
-        Applicant applicant = new Applicant(first, last, email, recruiterId);
+            @PathVariable("ph")String phone,
+            @PathVariable("re")Integer recruiterId,
+            @PathVariable("db")String dateOfBirth) {
+        Applicant applicant = new Applicant(first, last, username, password, email, phone, recruiterId, dateOfBirth);
         return applicantRepository.save(applicant);
     }
 
@@ -41,7 +45,7 @@ public class ApplicantOrmDao {
         applicantRepository.deleteById(id);
     }
 
-    @GetMapping("/orm/applicants/update/{applicantId}/{email}/{applicantId}")
+    @GetMapping("/orm/applicants/update/{applicantId}/{email}/{applicantId}/{recruiterId}")
     public Applicant updateApplicant(
             @PathVariable("applicantId") Integer id,
             @PathVariable("email") String newEmail,

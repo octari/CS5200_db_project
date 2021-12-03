@@ -24,8 +24,32 @@ const InlineApplicantEditor = ({applicant, deleteApplicant, updateApplicant}) =>
                     <div className="col">
                         <input
                             className="form-control"
+                            value={applicantCopy.username}
+                            onChange={(e)=>setApplicantCopy(applicantCopy => ({...applicantCopy, username: e.target.value}))}/>
+                    </div>
+                    <div className="col">
+                        <input
+                            className="form-control"
+                            value={applicantCopy.password}
+                            onChange={(e)=>setApplicantCopy(applicantCopy => ({...applicantCopy, password: e.target.value}))}/>
+                    </div>
+                    <div className="col">
+                        <input
+                            className="form-control"
                             value={applicantCopy.email}
                             onChange={(e)=>setApplicantCopy(applicantCopy => ({...applicantCopy, email: e.target.value}))}/>
+                    </div>
+                    <div className="col">
+                        <input
+                            className="form-control"
+                            value={applicantCopy.phone}
+                            onChange={(e)=>setApplicantCopy(applicantCopy => ({...applicantCopy, phone: e.target.value}))}/>
+                    </div>
+                    <div className="col">
+                        <input
+                            className="form-control"
+                            value={applicantCopy.dateOfBirth}
+                            onChange={(e)=>setApplicantCopy(applicantCopy => ({...applicantCopy, dateOfBirth: e.target.value}))}/>
                     </div>
                     <div className="col-1">
                         <Link to={`/Applicants/${applicantCopy.id}`}>
@@ -60,7 +84,27 @@ const InlineApplicantEditor = ({applicant, deleteApplicant, updateApplicant}) =>
                     </div>
                     <div className="col">
                         <Link to={`/applicants/${applicantCopy.id}`}>
+                            {applicantCopy.username}
+                        </Link>
+                    </div>
+                    <div className="col">
+                        <Link to={`/applicants/${applicantCopy.id}`}>
+                            {applicantCopy.password}
+                        </Link>
+                    </div>
+                    <div className="col">
+                        <Link to={`/applicants/${applicantCopy.id}`}>
                             {applicantCopy.email}
+                        </Link>
+                    </div>
+                    <div className="col">
+                        <Link to={`/applicants/${applicantCopy.id}`}>
+                            {applicantCopy.phone}
+                        </Link>
+                    </div>
+                    <div className="col">
+                        <Link to={`/applicants/${applicantCopy.id}`}>
+                            {applicantCopy.dateOfBirth}
                         </Link>
                     </div>
                     <div className="col-1">

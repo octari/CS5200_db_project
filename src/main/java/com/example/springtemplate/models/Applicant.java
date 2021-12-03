@@ -1,5 +1,6 @@
 package com.example.springtemplate.models;
 
+
 import javax.persistence.*;
 
 @Entity
@@ -10,8 +11,12 @@ public class Applicant {
     private Integer id;
     private String firstName;
     private String lastName;
+    private String user_name;
+    private String password;
     private String email;
+    private String phone;
     private Integer recruiterId;
+    private String dataOfBirth;
 
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
@@ -19,17 +24,40 @@ public class Applicant {
     public void setFirstName(String firstName) { this.firstName = firstName; }
     public String getLastName() { return lastName; }
     public void setLastName(String lastName) { this.lastName = lastName; }
+    public String getUser_name() { return user_name; }
+
+    public void setUser_name(String user_name) { this.user_name = user_name; }
+
+    public String getPassword() { return password; }
+
+    public void setPassword(String password) { this.password = password; }
+
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
+    public String getPhone() { return phone; }
+
+    public void setPhone(String phone) { this.phone = phone; }
     public Integer getRecruiterId() { return recruiterId; }
     public void setRecruiterId(Integer recruiterId) { this.recruiterId = recruiterId; }
+    public String  getDataOfBirth() { return dataOfBirth; }
 
-    public Applicant(String first_name, String last_name, String email, Integer recruiterId) {
+    public void setDataOfBirth(String dataOfBirth) { this.dataOfBirth = dataOfBirth; }
+
+    public Applicant(String first_name, String last_name, String user_name, String password, String email, String phone, Integer recruiterId, String  dataOfBirth) {
         this.firstName = first_name;
         this.lastName = last_name;
+        this.user_name = user_name;
+        this.password = password;
         this.email = email;
+        this.phone = phone;
         this.recruiterId = recruiterId;
+        this.dataOfBirth = dataOfBirth;
     }
 
     public Applicant() {}
+
+
+
+
+
 }

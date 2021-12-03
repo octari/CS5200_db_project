@@ -37,16 +37,37 @@ const ApplicantFormEditor = () => {
                     setApplicant(applicant =>
                         ({...applicant, lastName: e.target.value}))}
                        value={applicant.lastName}/><br/>
+                <label>User Name</label>
+                <input onChange={(e) =>
+                    setApplicant(applicant =>
+                        ({...applicant, username: e.target.value}))}
+                        value={applicant.username}/><br/>
+                <label>Password</label>
+                <input onChange={(e) =>
+                    setApplicant(applicant =>
+                        ({...applicant, password: e.target.value}))}
+                        value={applicant.password}/><br/>
                 <label>Email</label>
                 <input onChange={(e) =>
                     setApplicant(applicant =>
                         ({...applicant, email: e.target.value}))}
                        value={applicant.email}/><br/>
+                <label>Phone</label>
+                <input onChange={(e) =>
+                    setApplicant(applicant =>
+                         ({...applicant, phone: e.target.value}))}
+                        value={applicant.phone}/><br/>
                 <label>RecruiterId</label>
                 <input onChange={(e) =>
                     setApplicant(applicant =>
                         ({...applicant, recruiterId: e.target.value}))}
-                    value={applicant.recruiterId}/><br/>
+                        value={applicant.recruiterId}/><br/>
+                <label>Data of Birth</label>
+                <input onChange={(e) =>
+                    setApplicant(applicant =>
+                         ({...applicant, dateOfBirth: e.target.value}))}
+                         value={applicant.dateOfBirth}/><br/>
+
 
             <button className="btn btn-warning" onClick={() => history.back()}>Cancel</button>
             <button className="btn btn-danger" onClick={() => deleteApplicant(applicant.id)}>Delete</button>

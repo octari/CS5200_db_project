@@ -17,12 +17,12 @@ public class ApplicantJdbcDao {
 
     static Connection connection = null;
     static PreparedStatement statement = null;
-    String CREATE_APPLICANT = "INSERT INTO applicants VALUES (null, ?, ?, ?, ?)";
+    String CREATE_APPLICANT = "INSERT INTO applicants VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?)";
     String FIND_ALL_APPLICANTS = "SELECT * FROM applicants";
     String FIND_APPLICANT_BY_ID = "SELECT * FROM applicants WHERE id=?";
     String DELETE_APPLICANT = "DELETE FROM applicants WHERE id=?";
     //String UPDATE_USER_PASSWORD = "UPDATE recruiters SET password=? WHERE id=?";
-    String UPDATE_APPLICANT = "UPDATE applicants SET first_name=?, last_name=?, email=?, recruiterId=? WHERE id=?";
+    String UPDATE_APPLICANT = "UPDATE applicants SET first_name=?, last_name=?, email=?, username=?, password=?, phone=?, data_of_birth=?, recruiterId=? WHERE id=?";
 
     private Connection getConnection() throws ClassNotFoundException, SQLException {
         Class.forName(DRIVER);
@@ -44,8 +44,12 @@ public class ApplicantJdbcDao {
             applicant = new Applicant(
                     resultSet.getString("first_name"),
                     resultSet.getString("last_name"),
+                    resultSet.getString("user_name"),
+                    resultSet.getString("password"),
                     resultSet.getString("email"),
-                    resultSet.getInt("recruiterId")
+                    resultSet.getString("phone"),
+                    resultSet.getInt("recruiterId"),
+                    resultSet.getString("dataOfBirth")
             );
         }
         closeConnection(connection);
@@ -70,8 +74,13 @@ public class ApplicantJdbcDao {
         statement = connection.prepareStatement(UPDATE_APPLICANT);
         statement.setString(1, newApplicant.getFirstName());
         statement.setString(2, newApplicant.getLastName());
-        statement.setString(3, newApplicant.getEmail());
-        statement.setInt(4, applicantId);
+        statement.setString(3, newApplicant.getUser_name());
+        statement.setString(4, newApplicant.getPassword());
+        statement.setString(5, newApplicant.getEmail());
+        statement.setString(6, newApplicant.getPhone());
+        statement.setString(7, newApplicant.getRecruiterId().toString());
+        statement.setString(8, newApplicant.getDataOfBirth());
+        statement.setInt(9, applicantId);
         rowsUpdated = statement.executeUpdate();
         closeConnection(connection);
         return rowsUpdated;
@@ -87,8 +96,12 @@ public class ApplicantJdbcDao {
             Applicant applicant = new Applicant(
                     resultSet.getString("first_name"),
                     resultSet.getString("last_name"),
+                    resultSet.getString("user_name"),
+                    resultSet.getString("password"),
                     resultSet.getString("email"),
-                    resultSet.getInt("recruiterId")
+                    resultSet.getString("phone"),
+                    resultSet.getInt("recruiterId"),
+                    resultSet.getString("dateOfBirth")
             );
             applicants.add(applicant);
         }
@@ -103,8 +116,12 @@ public class ApplicantJdbcDao {
         statement = connection.prepareStatement(CREATE_APPLICANT);
         statement.setString(1, newApplicant.getFirstName());
         statement.setString(2, newApplicant.getLastName());
-        statement.setString(3, newApplicant.getEmail());
-        statement.setInt(4, newApplicant.getRecruiterId());
+        statement.setString(3, newApplicant.getUser_name());
+        statement.setString(4, newApplicant.getPassword());
+        statement.setString(5, newApplicant.getEmail());
+        statement.setString(6, newApplicant.getPhone());
+        statement.setString(7, newApplicant.getRecruiterId().toString());
+        statement.setString(8, newApplicant.getDataOfBirth());
         rowsInserted = statement.executeUpdate();
         closeConnection(connection);
         return rowsInserted;
@@ -113,18 +130,11 @@ public class ApplicantJdbcDao {
         ApplicantJdbcDao dao = new ApplicantJdbcDao();
 
         Applicant adam =
-                new Applicant("Adam", "Smith", "adamsmith@company.com",
-                         1);
-        Applicant thomas =
-                new Applicant("Thomas", "Sowell", "thomassowell@gmail.com",
-                         2);
-        Applicant catherine =
-                new Applicant("Catherine", "Wood", "cathiewood@gmail.com",
-                         3);
+                new Applicant("Adam", "Smith", "sAdam", "sAdam", "adamsmith@company.com", "123456789", 1, "20121212");
+
 
         dao.createApplicant(adam);
-        dao.createApplicant(thomas);
-        dao.createApplicant(catherine);
+
 
 //        dao.deleteRecruiter(25);
 //        User newTom = new User(
