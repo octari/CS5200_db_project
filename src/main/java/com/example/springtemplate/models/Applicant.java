@@ -12,12 +12,11 @@ public class Applicant {
     private Integer id;
     private String firstName;
     private String lastName;
-    private String user_name;
-    private String password;
     private String email;
-    private String phone;
+    private String username;
+    private String password;
+    private Date dateOfBirth;
     private Integer recruiterId;
-    private Date dataOfBirth;
 
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
@@ -25,34 +24,26 @@ public class Applicant {
     public void setFirstName(String firstName) { this.firstName = firstName; }
     public String getLastName() { return lastName; }
     public void setLastName(String lastName) { this.lastName = lastName; }
-    public String getUser_name() { return user_name; }
-
-    public void setUser_name(String user_name) { this.user_name = user_name; }
-
-    public String getPassword() { return password; }
-
-    public void setPassword(String password) { this.password = password; }
-
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
-    public String getPhone() { return phone; }
-
-    public void setPhone(String phone) { this.phone = phone; }
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+    public Date  getDateOfBirth() { return dateOfBirth; }
+    public void setDateOfBirth(Date dateOfBirth) { this.dateOfBirth = dateOfBirth;}
     public Integer getRecruiterId() { return recruiterId; }
     public void setRecruiterId(Integer recruiterId) { this.recruiterId = recruiterId; }
-    public Date  getDataOfBirth() { return dataOfBirth; }
 
-    public void setDataOfBirth(Date dataOfBirth) { this.dataOfBirth = dataOfBirth; }
 
-    public Applicant(String first_name, String last_name, String email, String user_name, String password, String phone, Integer recruiterId, Date  dataOfBirth) {
+    public Applicant(String first_name, String last_name, String email, String username, String password,  Date dateOfBirth, Integer recruiterId) {
         this.firstName = first_name;
         this.lastName = last_name;
-        this.user_name = user_name;
-        this.password = password;
         this.email = email;
-        this.phone = phone;
+        this.username = username;
+        this.password = password;
+        this.dateOfBirth = dateOfBirth;
         this.recruiterId = recruiterId;
-        this.dataOfBirth = dataOfBirth;
     }
 
     public Applicant() {}

@@ -18,12 +18,12 @@ public class ApplicantJdbcDao {
 
     static Connection connection = null;
     static PreparedStatement statement = null;
-    String CREATE_APPLICANT = "INSERT INTO applicants VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?)";
+    String CREATE_APPLICANT = "INSERT INTO applicants VALUES (null, ?, ?, ?, ?, ?, ?, ?)";
     String FIND_ALL_APPLICANTS = "SELECT * FROM applicants";
     String FIND_APPLICANT_BY_ID = "SELECT * FROM applicants WHERE id=?";
     String DELETE_APPLICANT = "DELETE FROM applicants WHERE id=?";
     String UPDATE_APPLICANT_PASSWORD = "UPDATE applicants SET password=? WHERE id=?";
-    String UPDATE_APPLICANT = "UPDATE applicants SET first_name=?, last_name=?, email=?, username=?, password=?, phone=?, recruiter_id=?, dataOfBirth=?  WHERE id=?";
+    String UPDATE_APPLICANT = "UPDATE applicants SET first_name=?, last_name=?, email=?, username=?, password=?, dateOfBirth=?, recruiter_id=?  WHERE id=?";
 
     private Connection getConnection() throws ClassNotFoundException, SQLException {
         Class.forName(DRIVER);
@@ -46,11 +46,10 @@ public class ApplicantJdbcDao {
                     resultSet.getString("first_name"),
                     resultSet.getString("last_name"),
                     resultSet.getString("email"),
-                    resultSet.getString("user_name"),
+                    resultSet.getString("username"),
                     resultSet.getString("password"),
-                    resultSet.getString("phone"),
-                    resultSet.getInt("recruiterId"),
-                    resultSet.getDate("dataOfBirth")
+                    resultSet.getDate("dateOfBirth"),
+                    resultSet.getInt("recruiterId")
             );
         }
         closeConnection(connection);
@@ -75,13 +74,12 @@ public class ApplicantJdbcDao {
         statement = connection.prepareStatement(UPDATE_APPLICANT);
         statement.setString(1, newApplicant.getFirstName());
         statement.setString(2, newApplicant.getLastName());
-        statement.setString(3, newApplicant.getUser_name());
-        statement.setString(4, newApplicant.getPassword());
-        statement.setString(5, newApplicant.getEmail());
-        statement.setString(6, newApplicant.getPhone());
+        statement.setString(3, newApplicant.getEmail());
+        statement.setString(4, newApplicant.getUsername());
+        statement.setString(5, newApplicant.getPassword());
+        statement.setDate(6, newApplicant.getDateOfBirth());
         statement.setInt(7, newApplicant.getRecruiterId());
-        statement.setDate(8, newApplicant.getDataOfBirth());
-        statement.setInt(9, applicantId);
+        statement.setInt(8, applicantId);
         rowsUpdated = statement.executeUpdate();
         closeConnection(connection);
         return rowsUpdated;
@@ -98,11 +96,10 @@ public class ApplicantJdbcDao {
                     resultSet.getString("first_name"),
                     resultSet.getString("last_name"),
                     resultSet.getString("email"),
-                    resultSet.getString("user_name"),
+                    resultSet.getString("username"),
                     resultSet.getString("password"),
-                    resultSet.getString("phone"),
-                    resultSet.getInt("recruiterId"),
-                    resultSet.getDate("dateOfBirth")
+                    resultSet.getDate("dateOfBirth"),
+                    resultSet.getInt("recruiterId")
             );
             applicants.add(applicant);
         }
@@ -119,11 +116,10 @@ public class ApplicantJdbcDao {
         statement.setString(1, newApplicant.getFirstName());
         statement.setString(2, newApplicant.getLastName());
         statement.setString(3, newApplicant.getEmail());
-        statement.setString(4, newApplicant.getUser_name());
+        statement.setString(4, newApplicant.getUsername());
         statement.setString(5, newApplicant.getPassword());
-        statement.setString(6, newApplicant.getPhone());
+        statement.setDate(6, newApplicant.getDateOfBirth());
         statement.setInt(7, newApplicant.getRecruiterId());
-        statement.setDate(8, newApplicant.getDataOfBirth());
         rowsInserted = statement.executeUpdate();
         closeConnection(connection);
         return rowsInserted;

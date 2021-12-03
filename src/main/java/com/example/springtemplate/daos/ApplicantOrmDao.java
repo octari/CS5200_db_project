@@ -15,17 +15,17 @@ public class ApplicantOrmDao {
     @Autowired
     ApplicantRepository applicantRepository;
 
-    @GetMapping("/orm/applicants/create/{fn}/{ln}/{un}/{ps}/{em}/{ph}/{re}/{db}")
+    @GetMapping("/orm/applicants/create/{fn}/{ln}/{em}/{us}/{ps}/{db}/{re}")
     public Applicant createRecruiter(
             @PathVariable("fn")String first,
             @PathVariable("ln")String last,
-            @PathVariable("un")String username,
-            @PathVariable("ps")String password,
             @PathVariable("em")String email,
-            @PathVariable("ph")String phone,
-            @PathVariable("re")Integer recruiterId,
-            @PathVariable("db") Date dateOfBirth) {
-        Applicant applicant = new Applicant(first, last, email, username, password, phone, recruiterId, dateOfBirth);
+            @PathVariable("us")String username,
+            @PathVariable("ps")String password,
+            @PathVariable("db") Date dateOfBirth,
+            @PathVariable("re")Integer recruiterId)
+             {
+        Applicant applicant = new Applicant(first, last, email, username, password, dateOfBirth, recruiterId);
         return applicantRepository.save(applicant);
     }
 

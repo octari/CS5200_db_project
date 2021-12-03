@@ -84,22 +84,17 @@ const InlineApplicantEditor = ({applicant, deleteApplicant, updateApplicant}) =>
                     </div>
                     <div className="col">
                         <Link to={`/applicants/${applicantCopy.id}`}>
+                            {applicantCopy.email}
+                        </Link>
+                    </div>
+                    <div className="col">
+                        <Link to={`/applicants/${applicantCopy.id}`}>
                             {applicantCopy.username}
                         </Link>
                     </div>
                     <div className="col">
                         <Link to={`/applicants/${applicantCopy.id}`}>
                             {applicantCopy.password}
-                        </Link>
-                    </div>
-                    <div className="col">
-                        <Link to={`/applicants/${applicantCopy.id}`}>
-                            {applicantCopy.email}
-                        </Link>
-                    </div>
-                    <div className="col">
-                        <Link to={`/applicants/${applicantCopy.id}`}>
-                            {applicantCopy.phone}
                         </Link>
                     </div>
                     <div className="col">
