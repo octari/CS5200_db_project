@@ -3,6 +3,7 @@ package com.example.springtemplate.daos;
 import com.example.springtemplate.models.Recruiter;
 
 import java.sql.*;
+import java.sql.Date;
 import java.util.*;
 
 public class RecruiterJdbcDao {
@@ -17,12 +18,12 @@ public class RecruiterJdbcDao {
 
     static Connection connection = null;
     static PreparedStatement statement = null;
-    String CREATE_RECRUITER = "INSERT INTO recruiters VALUES (null, ?, ?, ?, ?, ?)";
+    String CREATE_RECRUITER = "INSERT INTO recruiters VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?)";
     String FIND_ALL_RECRUITERS = "SELECT * FROM recruiters";
     String FIND_RECRUITER_BY_ID = "SELECT * FROM recruiters WHERE id=?";
     String DELETE_RECRUITER = "DELETE FROM recruiters WHERE id=?";
-    //String UPDATE_USER_PASSWORD = "UPDATE recruiters SET password=? WHERE id=?";
-    String UPDATE_RECRUITER = "UPDATE recruiters SET first_name=?, last_name=?, email=?, phone=?, companyId=? WHERE id=?";
+    String UPDATE_RECRUITER_PASSWORD = "UPDATE recruiters SET password=? WHERE id=?";
+    String UPDATE_RECRUITER = "UPDATE recruiters SET first_name=?, last_name=?, email=?, phone=?, username=?, password=?, dateOfBirth=?, companyId=? WHERE id=?";
 
     private Connection getConnection() throws ClassNotFoundException, SQLException {
         Class.forName(DRIVER);
@@ -46,6 +47,9 @@ public class RecruiterJdbcDao {
                     resultSet.getString("last_name"),
                     resultSet.getString("email"),
                     resultSet.getInt("phone"),
+                    resultSet.getString("username"),
+                    resultSet.getString("password"),
+                    resultSet.getDate("dateOfBirth"),
                     resultSet.getInt("companyId")
             );
         }
@@ -73,8 +77,11 @@ public class RecruiterJdbcDao {
         statement.setString(2, newRecruiter.getLastName());
         statement.setString(3, newRecruiter.getEmail());
         statement.setInt(4, newRecruiter.getPhone());
-        statement.setInt(4, newRecruiter.getCompanyId());
-        statement.setInt(5, recruiterId);
+        statement.setString(5, newRecruiter.getUsername());
+        statement.setString(6, newRecruiter.getPassword());
+        statement.setDate(7, newRecruiter.getDateOfBirth());
+        statement.setInt(8, newRecruiter.getCompanyId());
+        statement.setInt(9, recruiterId);
         rowsUpdated = statement.executeUpdate();
         closeConnection(connection);
         return rowsUpdated;
@@ -92,6 +99,9 @@ public class RecruiterJdbcDao {
                     resultSet.getString("last_name"),
                     resultSet.getString("email"),
                     resultSet.getInt("phone"),
+                    resultSet.getString("username"),
+                    resultSet.getString("password"),
+                    resultSet.getDate("dateOfBirth"),
                     resultSet.getInt("companyId")
             );
             recruiters.add(recruiter);
@@ -109,27 +119,31 @@ public class RecruiterJdbcDao {
         statement.setString(2, newRecruiter.getLastName());
         statement.setString(3, newRecruiter.getEmail());
         statement.setInt(4, newRecruiter.getPhone());
-        statement.setInt(5, newRecruiter.getCompanyId());
+        statement.setString(5, newRecruiter.getUsername());
+        statement.setString(6, newRecruiter.getPassword());
+        statement.setDate(7, newRecruiter.getDateOfBirth());
+        statement.setInt(8, newRecruiter.getCompanyId());
         rowsInserted = statement.executeUpdate();
         closeConnection(connection);
         return rowsInserted;
     }
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        RecruiterJdbcDao dao = new RecruiterJdbcDao();
+//    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+//        RecruiterJdbcDao dao = new RecruiterJdbcDao();
+//
+//        Recruiter adam =
+//                new Recruiter("Adam", "Smith", "awood", "12345%^^&",
+//                        12/12/2021,"adamsmith@company.com",
+//                        1234567890, 1);
+//        Recruiter thomas =
+//                new Recruiter("Thomas", "Sowell", "thomassowell@gmail.com",
+//                        1234567891, 2);
+//        Recruiter catherine =
+//                new Recruiter("Catherine", "Wood", "cathiewood@gmail.com",
+//                        1234567892, 3);
 
-        Recruiter adam =
-                new Recruiter("Adam", "Smith", "adamsmith@company.com",
-                        1234567890, 1);
-        Recruiter thomas =
-                new Recruiter("Thomas", "Sowell", "thomassowell@gmail.com",
-                        1234567891, 2);
-        Recruiter catherine =
-                new Recruiter("Catherine", "Wood", "cathiewood@gmail.com",
-                        1234567892, 3);
-
-        dao.createRecruiter(adam);
-        dao.createRecruiter(thomas);
-        dao.createRecruiter(catherine);
+//        dao.createRecruiter(adam);
+//        dao.createRecruiter(thomas);
+//        dao.createRecruiter(catherine);
 
 //        dao.deleteRecruiter(25);
 //        User newTom = new User(
@@ -149,5 +163,5 @@ public class RecruiterJdbcDao {
 //        User user = dao.findUserById(7);
 //        System.out.println(user.getUsername());
 
-    }
+//    }
 }

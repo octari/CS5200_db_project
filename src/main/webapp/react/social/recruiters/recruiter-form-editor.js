@@ -42,12 +42,26 @@ const RecruiterFormEditor = () => {
                     setRecruiter(recruiter =>
                         ({...recruiter, email: e.target.value}))}
                        value={recruiter.email}/><br/>
-
             <label>Phone</label>
             <input onChange={(e) =>
                 setRecruiter(recruiter =>
                     ({...recruiter, phone: e.target.value}))}
                    value={recruiter.phone}/><br/>
+            <label>Username</label>
+            <input onChange={(e) =>
+                setRecruiter(recruiter =>
+                    ({...recruiter, username: e.target.value}))}
+                   value={recruiter.username}/><br/>
+            <label>Password</label>
+            <input onChange={(e) =>
+                setRecruiter(recruiter =>
+                    ({...recruiter, password: e.target.value}))}
+                   value={recruiter.password}/><br/>
+            <label>Date of Birth</label>
+            <input onChange={(e) =>
+                setRecruiter(recruiter =>
+                    ({...recruiter, dateOfBirth: e.target.value}))}
+                   value={recruiter.dateOfBirth}/><br/>
             <label>Company</label>
             <input onChange={(e) =>
                 setRecruiter(recruiter =>

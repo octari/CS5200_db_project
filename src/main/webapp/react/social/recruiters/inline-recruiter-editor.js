@@ -36,6 +36,24 @@ const InlineRecruiterEditor = ({recruiter, deleteRecruiter, updateRecruiter}) =>
                     <div className="col">
                         <input
                             className="form-control"
+                            value={recruiterCopy.username}
+                            onChange={(e)=>setRecruiterCopy(recruiterCopy => ({...recruiterCopy, username: e.target.value}))}/>
+                    </div>
+                    <div className="col">
+                        <input
+                            className="form-control"
+                            value={recruiterCopy.password}
+                            onChange={(e)=>setRecruiterCopy(recruiterCopy => ({...recruiterCopy, password: e.target.value}))}/>
+                    </div>
+                    <div className="col">
+                        <input
+                            className="form-control"
+                            value={recruiterCopy.dateOfBirth}
+                            onChange={(e)=>setRecruiterCopy(recruiterCopy => ({...recruiterCopy, dateOfBirth: e.target.value}))}/>
+                    </div>
+                    <div className="col">
+                        <input
+                            className="form-control"
                             value={recruiterCopy.companyId}
                             onChange={(e)=>setRecruiterCopy(recruiterCopy => ({...recruiterCopy, companyId: e.target.value}))}/>
                     </div>
@@ -78,6 +96,21 @@ const InlineRecruiterEditor = ({recruiter, deleteRecruiter, updateRecruiter}) =>
                     <div className="col">
                         <Link to={`/recruiters/${recruiterCopy.id}`}>
                             {recruiterCopy.phone}
+                        </Link>
+                    </div>
+                    <div className="col">
+                        <Link to={`/recruiters/${recruiterCopy.id}`}>
+                            {recruiterCopy.username}
+                        </Link>
+                    </div>
+                    <div className="col">
+                        <Link to={`/recruiters/${recruiterCopy.id}`}>
+                            {recruiterCopy.password}
+                        </Link>
+                    </div>
+                    <div className="col">
+                        <Link to={`/recruiters/${recruiterCopy.id}`}>
+                            {recruiterCopy.dateOfBirth}
                         </Link>
                     </div>
                     <div className="col">
