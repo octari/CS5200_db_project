@@ -14,6 +14,14 @@ const App = () => {
     return (
         <div className="container-fluid">
             <HashRouter>
+                <Route path={["/recruiters", "/"]} exact={true}>
+                    <RecruiterList/>
+                </Route>
+                <Route path="/recruiters/:id" exact={true}>
+                    <RecruiterFormEditor/>
+                </Route>
+            </HashRouter>
+            <HashRouter>
                 <Route path={["/applicants", "/"]} exact={true}>
                     <ApplicantList/>
                 </Route>

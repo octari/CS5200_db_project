@@ -1,12 +1,14 @@
 package com.example.springtemplate.daos;
 
 import com.example.springtemplate.models.Recruiter;
+import com.example.springtemplate.models.User;
 import com.example.springtemplate.repositories.RecruiterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.Date;
 import java.util.List;
 
 @RestController
@@ -14,13 +16,16 @@ public class RecruiterOrmDao {
   @Autowired
   RecruiterRepository recruiterRepository;
 
-  @GetMapping("/orm/recruiters/create/{fn}/{ln}/{ph}/{em}")
+  @GetMapping("/orm/recruiters/create/{fn}/{ln}/{em}/{ph}/{us}/{pa}/{do}")
   public Recruiter createRecruiter(
           @PathVariable("fn")String first,
           @PathVariable("ln")String last,
+          @PathVariable("em")String email,
           @PathVariable("ph")Integer phone,
-          @PathVariable("em")String email) {
-    Recruiter recruiter = new Recruiter(first, last, email, phone, null);
+          @PathVariable("us")String username,
+          @PathVariable("pa")String password,
+          @PathVariable("do") Date dateOfBirth) {
+    Recruiter recruiter = new Recruiter(first, last, email, phone, username, password, dateOfBirth,null);
     return recruiterRepository.save(recruiter);
   }
 
@@ -41,15 +46,12 @@ public class RecruiterOrmDao {
     recruiterRepository.deleteById(id);
   }
 
-  @GetMapping("/orm/recruiters/update/{recruiterId}/{phone}/{email}")
-  public Recruiter updateRecruiter(
-          @PathVariable("recruiterId") Integer id,
-          @PathVariable("phone") Integer newPhone,
-          @PathVariable("email")String newEmail
-  ) {
+  @GetMapping("/orm/recruiters/update/{recruiterId}/{password}")
+  public Recruiter updateRecruiter(@PathVariable("recruiterId") Integer id,
+                         @PathVariable("password") String newPass) {
     Recruiter recruiter = recruiterRepository.findRecruiterById(id);
-    recruiter.setEmail(newEmail);
-    recruiter.setPhone(newPhone);
+    recruiter.setPassword(newPass);
     return recruiterRepository.save(recruiter);
+
   }
 }

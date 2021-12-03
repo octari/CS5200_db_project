@@ -1,7 +1,6 @@
 package com.example.springtemplate.daos;
 
 import com.example.springtemplate.models.Recruiter;
-import com.example.springtemplate.models.User;
 import com.example.springtemplate.repositories.RecruiterRestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +36,9 @@ public class RecruiterRestOrmDao {
         recruiter.setLastName(recruiterUpdates.getLastName());
         recruiter.setEmail(recruiterUpdates.getEmail());
         recruiter.setPhone(recruiterUpdates.getPhone());
+        recruiter.setUsername(recruiterUpdates.getUsername());
+        recruiter.setPassword(recruiterUpdates.getPassword());
+        recruiter.setDateOfBirth(recruiterUpdates.getDateOfBirth());
         recruiter.setCompanyId(recruiterUpdates.getCompanyId());
         return recruiterRepository.save(recruiter);
     }

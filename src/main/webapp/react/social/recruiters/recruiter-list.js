@@ -28,6 +28,9 @@ const RecruiterList = () => {
                             {recruiter.lastName},
                                 {recruiter.email},
                                 {recruiter.phone},
+                                {recruiter.username},
+                                {recruiter.password},
+                                {recruiter.dateOfBirth},
                                 {recruiter.companyId}
                             </Link>
                         </li>)
