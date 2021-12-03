@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.sql.Date;
 
 @RestController
 public class ApplicantOrmDao {
@@ -23,8 +24,8 @@ public class ApplicantOrmDao {
             @PathVariable("em")String email,
             @PathVariable("ph")String phone,
             @PathVariable("re")Integer recruiterId,
-            @PathVariable("db")String dateOfBirth) {
-        Applicant applicant = new Applicant(first, last, username, password, email, phone, recruiterId, dateOfBirth);
+            @PathVariable("db") Date dateOfBirth) {
+        Applicant applicant = new Applicant(first, last, email, username, password, phone, recruiterId, dateOfBirth);
         return applicantRepository.save(applicant);
     }
 
@@ -45,15 +46,13 @@ public class ApplicantOrmDao {
         applicantRepository.deleteById(id);
     }
 
-    @GetMapping("/orm/applicants/update/{applicantId}/{email}/{applicantId}/{recruiterId}")
+    @GetMapping("/orm/applicants/update/{applicantId}/{password}")
     public Applicant updateApplicant(
             @PathVariable("applicantId") Integer id,
-            @PathVariable("email") String newEmail,
-            @PathVariable("recruiterId") Integer newRecruiterId
+            @PathVariable("password") String newPass
     ) {
         Applicant applicant = applicantRepository.findApplicantById(id);
-        applicant.setEmail(newEmail);
-        applicant.setRecruiterId(newRecruiterId);
+        applicant.setPassword(newPass);
         return applicantRepository.save(applicant);
     }
 }

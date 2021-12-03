@@ -1,6 +1,7 @@
 package com.example.springtemplate.models;
 
 
+import java.sql.Date;
 import javax.persistence.*;
 
 @Entity
@@ -16,7 +17,7 @@ public class Applicant {
     private String email;
     private String phone;
     private Integer recruiterId;
-    private String dataOfBirth;
+    private Date dataOfBirth;
 
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
@@ -39,11 +40,11 @@ public class Applicant {
     public void setPhone(String phone) { this.phone = phone; }
     public Integer getRecruiterId() { return recruiterId; }
     public void setRecruiterId(Integer recruiterId) { this.recruiterId = recruiterId; }
-    public String  getDataOfBirth() { return dataOfBirth; }
+    public Date  getDataOfBirth() { return dataOfBirth; }
 
-    public void setDataOfBirth(String dataOfBirth) { this.dataOfBirth = dataOfBirth; }
+    public void setDataOfBirth(Date dataOfBirth) { this.dataOfBirth = dataOfBirth; }
 
-    public Applicant(String first_name, String last_name, String user_name, String password, String email, String phone, Integer recruiterId, String  dataOfBirth) {
+    public Applicant(String first_name, String last_name, String email, String user_name, String password, String phone, Integer recruiterId, Date  dataOfBirth) {
         this.firstName = first_name;
         this.lastName = last_name;
         this.user_name = user_name;

@@ -35,12 +35,12 @@ public class ApplicantRestOrmDao {
     Applicant applicant = applicantRepository.findApplicantById(id);
     applicant.setFirstName(applicantUpdates.getFirstName());
     applicant.setLastName(applicantUpdates.getLastName());
-    applicant.setLastName(applicantUpdates.getUser_name());
-    applicant.setLastName(applicantUpdates.getPassword());
+    applicant.setUser_name(applicantUpdates.getUser_name());
+    applicant.setPassword(applicantUpdates.getPassword());
     applicant.setEmail(applicantUpdates.getEmail());
-    applicant.setLastName(applicantUpdates.getPhone());
+    applicant.setPhone(applicantUpdates.getPhone());
     applicant.setRecruiterId(applicantUpdates.getRecruiterId());
-    applicant.setLastName(applicantUpdates.getDataOfBirth());
+    applicant.setDataOfBirth(applicantUpdates.getDataOfBirth());
 
     return applicantRepository.save(applicant);
   }

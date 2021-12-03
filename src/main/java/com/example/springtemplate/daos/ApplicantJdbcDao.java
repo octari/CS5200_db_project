@@ -4,6 +4,7 @@ import com.example.springtemplate.models.Applicant;
 
 import java.sql.*;
 import java.util.*;
+import java.sql.Date;
 
 public class ApplicantJdbcDao {
     static final String DRIVER = "com.mysql.cj.jdbc.Driver";
@@ -11,7 +12,7 @@ public class ApplicantJdbcDao {
     static final String SCHEMA = "jobs_design";
     static final String CONFIG = "serverTimezone=UTC";
     static final String URL =
-            "jdbc:mysql://"+HOST+"/"+SCHEMA+"?"+CONFIG;
+            "jdbc:mysql://" + HOST + "/" + SCHEMA + "?" + CONFIG;
     static final String USERNAME = "root";
     static final String PASSWORD = "P@ssw0rd";
 
@@ -21,8 +22,8 @@ public class ApplicantJdbcDao {
     String FIND_ALL_APPLICANTS = "SELECT * FROM applicants";
     String FIND_APPLICANT_BY_ID = "SELECT * FROM applicants WHERE id=?";
     String DELETE_APPLICANT = "DELETE FROM applicants WHERE id=?";
-    //String UPDATE_USER_PASSWORD = "UPDATE recruiters SET password=? WHERE id=?";
-    String UPDATE_APPLICANT = "UPDATE applicants SET first_name=?, last_name=?, email=?, username=?, password=?, phone=?, data_of_birth=?, recruiterId=? WHERE id=?";
+    String UPDATE_APPLICANT_PASSWORD = "UPDATE applicants SET password=? WHERE id=?";
+    String UPDATE_APPLICANT = "UPDATE applicants SET first_name=?, last_name=?, email=?, username=?, password=?, phone=?, recruiter_id=?, dataOfBirth=?  WHERE id=?";
 
     private Connection getConnection() throws ClassNotFoundException, SQLException {
         Class.forName(DRIVER);
@@ -40,16 +41,16 @@ public class ApplicantJdbcDao {
         statement = connection.prepareStatement(FIND_APPLICANT_BY_ID);
         statement.setInt(1, id);
         ResultSet resultSet = statement.executeQuery();
-        if(resultSet.next()) {
+        if (resultSet.next()) {
             applicant = new Applicant(
                     resultSet.getString("first_name"),
                     resultSet.getString("last_name"),
+                    resultSet.getString("email"),
                     resultSet.getString("user_name"),
                     resultSet.getString("password"),
-                    resultSet.getString("email"),
                     resultSet.getString("phone"),
                     resultSet.getInt("recruiterId"),
-                    resultSet.getString("dataOfBirth")
+                    resultSet.getDate("dataOfBirth")
             );
         }
         closeConnection(connection);
@@ -78,8 +79,8 @@ public class ApplicantJdbcDao {
         statement.setString(4, newApplicant.getPassword());
         statement.setString(5, newApplicant.getEmail());
         statement.setString(6, newApplicant.getPhone());
-        statement.setString(7, newApplicant.getRecruiterId().toString());
-        statement.setString(8, newApplicant.getDataOfBirth());
+        statement.setInt(7, newApplicant.getRecruiterId());
+        statement.setDate(8, newApplicant.getDataOfBirth());
         statement.setInt(9, applicantId);
         rowsUpdated = statement.executeUpdate();
         closeConnection(connection);
@@ -96,12 +97,12 @@ public class ApplicantJdbcDao {
             Applicant applicant = new Applicant(
                     resultSet.getString("first_name"),
                     resultSet.getString("last_name"),
+                    resultSet.getString("email"),
                     resultSet.getString("user_name"),
                     resultSet.getString("password"),
-                    resultSet.getString("email"),
                     resultSet.getString("phone"),
                     resultSet.getInt("recruiterId"),
-                    resultSet.getString("dateOfBirth")
+                    resultSet.getDate("dateOfBirth")
             );
             applicants.add(applicant);
         }
@@ -109,6 +110,7 @@ public class ApplicantJdbcDao {
         return applicants;
 
     }
+
     public Integer createApplicant(Applicant newApplicant)
             throws ClassNotFoundException, SQLException {
         Integer rowsInserted = 0;
@@ -116,24 +118,27 @@ public class ApplicantJdbcDao {
         statement = connection.prepareStatement(CREATE_APPLICANT);
         statement.setString(1, newApplicant.getFirstName());
         statement.setString(2, newApplicant.getLastName());
-        statement.setString(3, newApplicant.getUser_name());
-        statement.setString(4, newApplicant.getPassword());
-        statement.setString(5, newApplicant.getEmail());
+        statement.setString(3, newApplicant.getEmail());
+        statement.setString(4, newApplicant.getUser_name());
+        statement.setString(5, newApplicant.getPassword());
         statement.setString(6, newApplicant.getPhone());
-        statement.setString(7, newApplicant.getRecruiterId().toString());
-        statement.setString(8, newApplicant.getDataOfBirth());
+        statement.setInt(7, newApplicant.getRecruiterId());
+        statement.setDate(8, newApplicant.getDataOfBirth());
         rowsInserted = statement.executeUpdate();
         closeConnection(connection);
         return rowsInserted;
     }
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        ApplicantJdbcDao dao = new ApplicantJdbcDao();
+}
 
-        Applicant adam =
-                new Applicant("Adam", "Smith", "sAdam", "sAdam", "adamsmith@company.com", "123456789", 1, "20121212");
+//    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+//        ApplicantJdbcDao dao = new ApplicantJdbcDao();
 
-
-        dao.createApplicant(adam);
+//        Applicant adam;
+//        adam = new Applicant("Adam", "Smith", "sAdam", "sAdam",
+//                "adamsmith@company.com", "123456789", 1, 12.12.2021);
+//
+//
+//        dao.createApplicant(adam);
 
 
 //        dao.deleteRecruiter(25);
@@ -153,6 +158,6 @@ public class ApplicantJdbcDao {
 //        }
 //        User user = dao.findUserById(7);
 //        System.out.println(user.getUsername());
-
-    }
-}
+//
+//    }
+//}
