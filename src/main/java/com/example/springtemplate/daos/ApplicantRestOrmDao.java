@@ -36,7 +36,11 @@ public class ApplicantRestOrmDao {
     applicant.setFirstName(applicantUpdates.getFirstName());
     applicant.setLastName(applicantUpdates.getLastName());
     applicant.setEmail(applicantUpdates.getEmail());
+    applicant.setUsername(applicantUpdates.getUsername());
+    applicant.setPassword(applicantUpdates.getPassword());
+    applicant.setDateOfBirth(applicantUpdates.getDateOfBirth());
     applicant.setRecruiterId(applicantUpdates.getRecruiterId());
+
 
     return applicantRepository.save(applicant);
   }
