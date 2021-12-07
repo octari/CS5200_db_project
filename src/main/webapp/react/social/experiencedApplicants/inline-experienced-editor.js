@@ -66,12 +66,12 @@ const InlineExperiencedApplicantEditor = ({experiencedApplicant, deleteExperienc
                         <i className="fas fa-2x fa-check float-right margin-left-10px"
                            onClick={() => {
                                setEditing(false)
-                               updateApplicant(experiencedApplicantCopy.id, experiencedApplicantCopy)
+                               updateExperiencedApplicant(experiencedApplicantCopy.id, experiencedApplicantCopy)
                            }}></i>
                         <i className="fas fa-2x fa-undo float-right margin-left-10px"
                            onClick={() => setEditing(false)}></i>
                         <i className="fas fa-2x fa-trash float-right margin-left-10px"
-                           onClick={() => deleteApplicant(experiencedApplicant.id)}></i>
+                           onClick={() => deleteExperiencedApplicant(experiencedApplicant.id)}></i>
                     </div>
                 </div>
             }
@@ -79,37 +79,37 @@ const InlineExperiencedApplicantEditor = ({experiencedApplicant, deleteExperienc
                 !editing &&
                 <div className="row">
                     <div className="col">
-                        <Link to={`/applicants/${experiencedApplicantCopy.id}`}>
+                        <Link to={`/experiencedApplicants/${experiencedApplicantCopy.id}`}>
                             {experiencedApplicantCopy.firstName}
                         </Link>
                     </div>
                     <div className="col">
-                        <Link to={`/applicants/${experiencedApplicantCopy.id}`}>
+                        <Link to={`/experiencedApplicants/${experiencedApplicantCopy.id}`}>
                             {experiencedApplicantCopy.lastName}
                         </Link>
                     </div>
                     <div className="col">
-                        <Link to={`/applicants/${experiencedApplicantCopy.id}`}>
+                        <Link to={`/experiencedApplicants/${experiencedApplicantCopy.id}`}>
                             {experiencedApplicantCopy.email}
                         </Link>
                     </div>
                     <div className="col">
-                        <Link to={`/applicants/${experiencedApplicantCopy.id}`}>
+                        <Link to={`/experiencedApplicants/${experiencedApplicantCopy.id}`}>
                             {experiencedApplicantCopy.username}
                         </Link>
                     </div>
                     <div className="col">
-                        <Link to={`/applicants/${experiencedApplicantCopy.id}`}>
+                        <Link to={`/experiencedApplicants/${experiencedApplicantCopy.id}`}>
                             {experiencedApplicantCopy.password}
                         </Link>
                     </div>
                     <div className="col">
-                        <Link to={`/applicants/${experiencedApplicantCopy.id}`}>
+                        <Link to={`/experiencedApplicants/${experiencedApplicantCopy.id}`}>
                             {experiencedApplicantCopy.dateOfBirth}
                         </Link>
                     </div>
                     <div className="col-1">
-                        <Link to={`/applicants/${experiencedApplicantCopy.id}`}>
+                        <Link to={`/experiencedApplicants/${experiencedApplicantCopy.id}`}>
 
                         </Link>
                     </div>

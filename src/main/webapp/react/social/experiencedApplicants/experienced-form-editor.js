@@ -1,4 +1,4 @@
-import applicantService from "./experienced-service"
+import experiencedApplicantService from "./experienced-service"
 const {useState, useEffect} = React;
 const {useParams, useHistory} = window.ReactRouterDOM;
 
@@ -11,16 +11,16 @@ const ExperiencedApplicantFormEditor = () => {
         }
     }, []);
     const findExperiencedApplicantById = (id) =>
-        applicantService.findExperiencedApplicantById(id)
-            .then(applicant => setApplicant(applicant))
+        experiencedApplicantService.findExperiencedApplicantById(id)
+            .then(experiencedApplicant => setExperiencedApplicant(experiencedApplicant))
     const deleteExperiencedApplicant = (id) =>
-        applicantService.deleteExperiencedApplicant(id)
+        experiencedApplicantService.deleteExperiencedApplicant(id)
             .then(() => history.back())
     const createExperiencedApplicant = (applicant) =>
-        applicantService.createExperiencedApplicant(applicant)
+        experiencedApplicantService.createExperiencedApplicant(applicant)
             .then(() => history.back())
     const updateExperiencedApplicant = (id, newApplicant) =>
-        applicantService.updateExperiencedApplicant(id, newApplicant)
+        experiencedApplicantService.updateExperiencedApplicant(id, newApplicant)
             .then(() => history.back())
     return (
         <div>

@@ -26,28 +26,29 @@ public class ExperiencedApplicantRestOrmDao {
         return (List<ExperiencedApplicant>) experiencedApplicantRepository.findAll();
     }
 
-//    @GetMapping("/api/applicants/{applicantId}")
-//    public Applicant findApplicantById(
-//            @PathVariable("applicantId") Integer id) {
-//        return applicantRepository.findApplicantById(id);
-//    }
-//
-//    @PutMapping("/api/applicants/{applicantId}")
-//    public Applicant updateApplicant(
-//            @PathVariable("applicantId") Integer id,
-//            @RequestBody Applicant applicantUpdates) {
-//        Applicant applicant = applicantRepository.findApplicantById(id);
-//        applicant.setFirstName(applicantUpdates.getFirstName());
-//        applicant.setLastName(applicantUpdates.getLastName());
-//        applicant.setEmail(applicantUpdates.getEmail());
-//        applicant.setRecruiterId(applicantUpdates.getRecruiterId());
-//
-//        return applicantRepository.save(applicant);
-//    }
-//
-//    @DeleteMapping("/api/applicants/{applicantId}")
-//    public void deleteApplicant(
-//            @PathVariable("applicantId") Integer id) {
-//        applicantRepository.deleteById(id);
-//    }
+    @GetMapping("/api/experiencedApplicants/{experiencedApplicantId}")
+    public ExperiencedApplicant findExperiencedApplicantById(
+            @PathVariable("experiencedApplicantId") Integer id) {
+        return experiencedApplicantRepository.findExperiencedApplicantById(id);
+    }
+
+    @PutMapping("/api/experiencedApplicants/{experiencedApplicantId}")
+    public ExperiencedApplicant updateExperiencedApplicant(
+            @PathVariable("experiencedApplicantId") Integer id,
+            @RequestBody ExperiencedApplicant experiencedApplicantUpdates) {
+        ExperiencedApplicant experiencedApplicant = experiencedApplicantRepository.findExperiencedApplicantById(id);
+        experiencedApplicant.setFirstName(experiencedApplicantUpdates.getFirstName());
+        experiencedApplicant.setLastName(experiencedApplicantUpdates.getLastName());
+        experiencedApplicant.setEmail(experiencedApplicantUpdates.getEmail());
+        experiencedApplicant.setRecruiterId(experiencedApplicantUpdates.getRecruiterId());
+        experiencedApplicant.setWorkExperience(experiencedApplicantUpdates.getWorkExperience());
+
+        return experiencedApplicantRepository.save(experiencedApplicant);
+    }
+
+    @DeleteMapping("/api/experiencedApplicants/{experiencedApplicantId}")
+    public void deleteExperiencedApplicant(
+            @PathVariable("experiencedApplicantId") Integer id) {
+        experiencedApplicantRepository.deleteById(id);
+    }
 }
