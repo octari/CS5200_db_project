@@ -17,7 +17,7 @@ public class ExperiencedApplicantRestOrmDao {
     ExperiencedApplicantRestRepository experiencedApplicantRepository;
 
     @PostMapping("/api/experiencedApplicants")
-    public Applicant createApplicant(@RequestBody ExperiencedApplicant experiencedApplicant) {
+    public ExperiencedApplicant createApplicant(@RequestBody ExperiencedApplicant experiencedApplicant) {
         return experiencedApplicantRepository.save(experiencedApplicant);
     }
 

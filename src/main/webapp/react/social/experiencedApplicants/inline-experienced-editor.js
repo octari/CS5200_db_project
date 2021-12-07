@@ -52,7 +52,7 @@ const InlineExperiencedApplicantEditor = ({experiencedApplicant, deleteExperienc
                             onChange={(e)=>setExperiencedApplicantCopy(experiencedApplicantCopy => ({...experiencedApplicantCopy, dateOfBirth: e.target.value}))}/>
                     </div>
                     <div className="col-1">
-                        <Link to={`/Applicants/${experiencedApplicantCopy.id}`}>
+                        <Link to={`/experiencedApplicants/${experiencedApplicantCopy.id}`}>
 
                         </Link>
                     </div>

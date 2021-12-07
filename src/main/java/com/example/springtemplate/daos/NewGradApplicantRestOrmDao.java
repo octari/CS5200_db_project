@@ -14,38 +14,40 @@ public class NewGradApplicantRestOrmDao {
     @Autowired
     NewGradApplicantRestRepository newGradApplicantRepository;
 
-//    @PostMapping("/api/applicants")
-//    public Applicant createApplicant(@RequestBody Applicant applicant) {
-//        return applicantRepository.save(applicant);
-//    }
+    @PostMapping("/api/newGradApplicants")
+    public NewGradApplicant createApplicant(@RequestBody NewGradApplicant newGradApplicant) {
+        return newGradApplicantRepository.save(newGradApplicant);
+    }
 
     @GetMapping("/api/newGradApplicants")
     public List<NewGradApplicant> findAllNewGradApplicants() {
         return (List<NewGradApplicant>) newGradApplicantRepository.findAll();
     }
 
-//    @GetMapping("/api/applicants/{applicantId}")
-//    public Applicant findApplicantById(
-//            @PathVariable("applicantId") Integer id) {
-//        return applicantRepository.findApplicantById(id);
-//    }
-//
-//    @PutMapping("/api/applicants/{applicantId}")
-//    public Applicant updateApplicant(
-//            @PathVariable("applicantId") Integer id,
-//            @RequestBody Applicant applicantUpdates) {
-//        Applicant applicant = applicantRepository.findApplicantById(id);
-//        applicant.setFirstName(applicantUpdates.getFirstName());
-//        applicant.setLastName(applicantUpdates.getLastName());
-//        applicant.setEmail(applicantUpdates.getEmail());
-//        applicant.setRecruiterId(applicantUpdates.getRecruiterId());
-//
-//        return applicantRepository.save(applicant);
-//    }
-//
-//    @DeleteMapping("/api/applicants/{applicantId}")
-//    public void deleteApplicant(
-//            @PathVariable("applicantId") Integer id) {
-//        applicantRepository.deleteById(id);
-//    }
+    @GetMapping("/api/newGradApplicants/{newGradApplicantId}")
+    public NewGradApplicant findNewGradApplicantById(
+            @PathVariable("newGradApplicantId") Integer id) {
+        return newGradApplicantRepository.findNewGradApplicantById(id);
+    }
+
+    @PutMapping("/api/newGradApplicants/{newGradApplicantId}")
+    public NewGradApplicant updateNewGradApplicant(
+            @PathVariable("newGradApplicantId") Integer id,
+            @RequestBody NewGradApplicant newGradApplicantUpdates) {
+        NewGradApplicant newGradApplicant = newGradApplicantRepository.findNewGradApplicantById(id);
+        newGradApplicant.setFirstName(newGradApplicantUpdates.getFirstName());
+        newGradApplicant.setLastName(newGradApplicantUpdates.getLastName());
+        newGradApplicant.setEmail(newGradApplicantUpdates.getEmail());
+        newGradApplicant.setRecruiterId(newGradApplicantUpdates.getRecruiterId());
+        newGradApplicant.setDegree(newGradApplicantUpdates.getDegree());
+        newGradApplicant.setInternshipCoop(newGradApplicantUpdates.getInternshipCoop());
+
+        return newGradApplicantRepository.save(newGradApplicant);
+    }
+
+    @DeleteMapping("/api/newGradApplicants/{newGradApplicantId}")
+    public void deleteNewGradApplicant(
+            @PathVariable("newGradApplicantId") Integer id) {
+        newGradApplicantRepository.deleteById(id);
+    }
 }

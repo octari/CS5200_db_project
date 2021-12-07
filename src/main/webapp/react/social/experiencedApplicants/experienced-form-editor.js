@@ -16,8 +16,8 @@ const ExperiencedApplicantFormEditor = () => {
     const deleteExperiencedApplicant = (id) =>
         experiencedApplicantService.deleteExperiencedApplicant(id)
             .then(() => history.back())
-    const createExperiencedApplicant = (applicant) =>
-        experiencedApplicantService.createExperiencedApplicant(applicant)
+    const createExperiencedApplicant = (newGradApplicant) =>
+        experiencedApplicantService.createExperiencedApplicant(newGradApplicant)
             .then(() => history.back())
     const updateExperiencedApplicant = (id, newApplicant) =>
         experiencedApplicantService.updateExperiencedApplicant(id, newApplicant)
