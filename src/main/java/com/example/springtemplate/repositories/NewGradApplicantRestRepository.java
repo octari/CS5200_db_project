@@ -9,11 +9,11 @@ import java.util.List;
 
 public interface NewGradApplicantRestRepository
         extends CrudRepository<NewGradApplicant, Integer> {
-//    @Query(value = "SELECT * FROM new_grad_applicant",
-//            nativeQuery = true)
-//    public List<NewGradApplicant> findAllNewGradApplicants();
-//    @Query(value = "SELECT * FROM new_grad_applicant WHERE id=:applicantId",
-//            nativeQuery = true)
-//    public NewGradApplicant findNewGradApplicantById(@Param("newGradApplicantId") Integer id);
+    @Query(value = "SELECT * FROM applicants",
+            nativeQuery = true)
+    public List<NewGradApplicant> findAllNewGradApplicants();
+    @Query(value = "SELECT * FROM applicants WHERE id=:applicantId",
+            nativeQuery = true)
+    public NewGradApplicant findNewGradApplicantById(@Param("applicantId") Integer id);
 
 }

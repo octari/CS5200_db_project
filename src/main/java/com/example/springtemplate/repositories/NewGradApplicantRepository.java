@@ -1,6 +1,5 @@
 package com.example.springtemplate.repositories;
 
-import com.example.springtemplate.models.Applicant;
 import com.example.springtemplate.models.NewGradApplicant;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -10,11 +9,11 @@ import java.util.List;
 
 public interface NewGradApplicantRepository
         extends CrudRepository<NewGradApplicant, Integer> {
-//    @Query(value = "SELECT * FROM new_grad_applicant",
-//            nativeQuery = true)
-//    public List<NewGradApplicant> findAllnewGradApplicants();
-//    @Query(value = "SELECT * FROM new_grad_applicant WHERE id=:applicantId",
-//            nativeQuery = true)
-//    public Applicant findNewGradApplicantById(@Param("newGradApplicantId") Integer id);
+    @Query(value = "SELECT * FROM applicants",
+            nativeQuery = true)
+    public List<NewGradApplicant> findAllNewGradApplicants();
+    @Query(value = "SELECT * FROM applicants WHERE id=:applicantId",
+            nativeQuery = true)
+    public NewGradApplicant findNewGradApplicantById(@Param("applicantId") Integer id);
 
 }
