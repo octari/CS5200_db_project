@@ -17,6 +17,10 @@ public class Applicant {
     private String password;
     private Date dateOfBirth;
     private Integer recruiterId;
+//    private String dtype;
+//    private String degree;
+//    private String internshipCoop;
+//    private String workExperience;
 
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
@@ -36,7 +40,8 @@ public class Applicant {
     public void setRecruiterId(Integer recruiterId) { this.recruiterId = recruiterId; }
 
 
-    public Applicant(String first_name, String last_name, String email, String username, String password,  Date dateOfBirth, Integer recruiterId) {
+    public Applicant(String first_name, String last_name, String email, String username,
+                     String password,  Date dateOfBirth, Integer recruiterId) {
         this.firstName = first_name;
         this.lastName = last_name;
         this.email = email;
@@ -44,6 +49,10 @@ public class Applicant {
         this.password = password;
         this.dateOfBirth = dateOfBirth;
         this.recruiterId = recruiterId;
+//        this.dtype = dtype;
+//        this.degree = degree;
+//        this.internshipCoop = internshipCoop;
+//        this.workExperience = workExperience;
     }
 
     public Applicant() {}

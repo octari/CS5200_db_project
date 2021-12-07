@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface ExperiencedApplicantRestRepository
         extends CrudRepository<ExperiencedApplicant, Integer> {
-//    @Query(value = "SELECT * FROM new_grad_applicant",
+//    @Query(value = "SELECT * FROM applicants",
 //            nativeQuery = true)
 //    public List<NewGradApplicant> findAllnewGradApplicants();
 //    @Query(value = "SELECT * FROM new_grad_applicant WHERE id=:applicantId",

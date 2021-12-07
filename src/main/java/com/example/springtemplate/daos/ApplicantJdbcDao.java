@@ -79,7 +79,6 @@ public class ApplicantJdbcDao {
         statement.setString(5, newApplicant.getPassword());
         statement.setDate(6, newApplicant.getDateOfBirth());
         statement.setInt(7, newApplicant.getRecruiterId());
-        statement.setInt(8, applicantId);
         rowsUpdated = statement.executeUpdate();
         closeConnection(connection);
         return rowsUpdated;

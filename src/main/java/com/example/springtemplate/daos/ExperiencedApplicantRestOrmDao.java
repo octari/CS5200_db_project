@@ -16,10 +16,10 @@ public class ExperiencedApplicantRestOrmDao {
     @Autowired
     ExperiencedApplicantRestRepository experiencedApplicantRepository;
 
-//    @PostMapping("/api/applicants")
-//    public Applicant createApplicant(@RequestBody Applicant applicant) {
-//        return applicantRepository.save(applicant);
-//    }
+    @PostMapping("/api/experiencedApplicants")
+    public Applicant createApplicant(@RequestBody ExperiencedApplicant experiencedApplicant) {
+        return experiencedApplicantRepository.save(experiencedApplicant);
+    }
 
     @GetMapping("/api/experiencedApplicants")
     public List<ExperiencedApplicant> findAllExperiencedGradApplicants() {

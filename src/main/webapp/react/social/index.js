@@ -8,6 +8,8 @@ import ApplicationList from "./applications/application-list";
 import ApplicationFormEditor from "./applications/application-form-editor";
 import RecruiterList from "./recruiters/recruiter-list";
 import RecruiterFormEditor from "./recruiters/recruiter-form-editor";
+import ExperiencedApplicantList from "./experiencedApplicants/experienced-list";
+import ExperiencedApplicantFormEditor from "./experiencedApplicants/experienced-form-editor";
 
 const {HashRouter, Route} = window.ReactRouterDOM; 
 const App = () => {
@@ -51,6 +53,14 @@ const App = () => {
                 </Route>
                 <Route path="/applications/:id" exact={true}>
                     <ApplicationFormEditor/>
+                </Route>
+            </HashRouter>
+            <HashRouter>
+                <Route path={["/experiencedApplicants", "/"]} exact={true}>
+                    <ExperiencedApplicantList/>
+                </Route>
+                <Route path="/experiencedApplicants/:id" exact={true}>
+                    <ExperiencedApplicantFormEditor/>
                 </Route>
             </HashRouter>
         </div>
