@@ -41,12 +41,29 @@ const ApplicantFormEditor = () => {
                 <input onChange={(e) =>
                     setApplicant(applicant =>
                         ({...applicant, email: e.target.value}))}
-                       value={applicant.email}/><br/>
+                        value={applicant.email}/><br/>
+                <label>User Name</label>
+                <input onChange={(e) =>
+                    setApplicant(applicant =>
+                        ({...applicant, username: e.target.value}))}
+                        value={applicant.username}/><br/>
+                <label>Password</label>
+                <input onChange={(e) =>
+                    setApplicant(applicant =>
+                        ({...applicant, password: e.target.value}))}
+                        value={applicant.password}/><br/>
+                <label>Data of Birth</label>
+                <input onChange={(e) =>
+                    setApplicant(applicant =>
+                        ({...applicant, dateOfBirth: e.target.value}))}
+                        value={applicant.dateOfBirth}/><br/>
                 <label>RecruiterId</label>
                 <input onChange={(e) =>
                     setApplicant(applicant =>
                         ({...applicant, recruiterId: e.target.value}))}
-                    value={applicant.recruiterId}/><br/>
+                        value={applicant.recruiterId}/><br/>
+
+
 
             <button className="btn btn-warning" onClick={() => history.back()}>Cancel</button>
             <button className="btn btn-danger" onClick={() => deleteApplicant(applicant.id)}>Delete</button>

@@ -28,7 +28,11 @@ const ApplicantList = () => {
                             {applicant.firstName},
                             {applicant.lastName},
                             {applicant.email},
+                            {applicant.username},
+                            {applicant.password},
+                            {applicant.dateOfBirth}
                             {applicant.recruiterId}
+
                             </Link>
                         </li>)
                 }
