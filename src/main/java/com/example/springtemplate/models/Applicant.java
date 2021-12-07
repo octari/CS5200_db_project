@@ -17,10 +17,6 @@ public class Applicant {
     private String password;
     private Date dateOfBirth;
     private Integer recruiterId;
-//    private String dtype;
-//    private String degree;
-//    private String internshipCoop;
-//    private String workExperience;
 
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
@@ -49,10 +45,6 @@ public class Applicant {
         this.password = password;
         this.dateOfBirth = dateOfBirth;
         this.recruiterId = recruiterId;
-//        this.dtype = dtype;
-//        this.degree = degree;
-//        this.internshipCoop = internshipCoop;
-//        this.workExperience = workExperience;
     }
 
     public Applicant() {}

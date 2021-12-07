@@ -15,21 +15,7 @@ public class ApplicantOrmDao {
     @Autowired
     ApplicantRepository applicantRepository;
 
-//    @GetMapping("/orm/applicants/create/{fn}/{ln}/{em}/{us}/{ps}/{db}/{re}")
-//    public Applicant createRecruiter(
-//            @PathVariable("fn")String first,
-//            @PathVariable("ln")String last,
-//            @PathVariable("em")String email,
-//            @PathVariable("us")String username,
-//            @PathVariable("ps")String password,
-//            @PathVariable("db") Date dateOfBirth,
-//            @PathVariable("re")Integer recruiterId)
-//             {
-//        Applicant applicant = new Applicant(first, last, email, username, password, dateOfBirth, recruiterId);
-//        return applicantRepository.save(applicant);
-//    }
-
-    @GetMapping("/orm/applicants/create/{fn}/{ln}/{em}/{us}/{ps}/{db}/{re}/{dt}/{dg}/{ic}/{we}")
+    @GetMapping("/orm/applicants/create/{fn}/{ln}/{em}/{us}/{ps}/{db}/{re}")
     public Applicant createRecruiter(
             @PathVariable("fn")String first,
             @PathVariable("ln")String last,
@@ -38,11 +24,7 @@ public class ApplicantOrmDao {
             @PathVariable("ps")String password,
             @PathVariable("db") Date dateOfBirth,
             @PathVariable("re")Integer recruiterId)
-//            @PathVariable("dt")String dtype)
-//            @PathVariable("dg")String degree,
-//            @PathVariable("ic")String internshipCoop,
-//            @PathVariable("we")String workExperience)
-    {
+             {
         Applicant applicant = new Applicant(first, last, email, username, password, dateOfBirth, recruiterId);
         return applicantRepository.save(applicant);
     }
