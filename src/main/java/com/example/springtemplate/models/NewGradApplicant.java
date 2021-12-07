@@ -3,24 +3,24 @@ package com.example.springtemplate.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name="new_grad_applicants")
+@DiscriminatorValue("NewGrad")
 public class NewGradApplicant extends Applicant {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Integer id;
     private String degree;
-    private String intershipCoop;
+    private String internshipCoop;
 
-    public Integer getId() { return id; }
-    public void setId(Integer id) { this.id = id; }
+//    public Integer getId() { return id; }
+//    public void setId(Integer id) { this.id = id; }
     public String getDegree() { return degree; }
     public void setDegree(String degree) { this.degree = degree; }
-    public String getIntershipCoop() { return intershipCoop; }
-    public void setIntershipCoop(String intershipCoop) { this.intershipCoop = intershipCoop; }
+    public String getInternshipCoop() { return internshipCoop; }
+    public void setInternshipCoop(String internshipCoop) { this.internshipCoop = internshipCoop; }
 
-    public NewGradApplicant(String degree, String intershipCoop) {
+    public NewGradApplicant(String degree, String internshipCoop) {
         this.degree = degree;
-        this.intershipCoop = intershipCoop;
+        this.internshipCoop = internshipCoop;
     }
 
     public NewGradApplicant() {}
