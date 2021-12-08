@@ -1,5 +1,7 @@
 package com.example.springtemplate.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -12,8 +14,12 @@ public class Application {
     private String applicantName;
     private String appliedPosition;
     private Date appliedDate;
-    private Integer applicantId;
+//    private Integer applicantId;
     private Integer jobId;
+
+    @ManyToOne
+    @JsonIgnore
+    private Applicant applicant;
 
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
@@ -23,17 +29,19 @@ public class Application {
     public void setAppliedPosition(String appliedPosition) { this.appliedPosition = appliedPosition; }
     public Date getAppliedDate() { return appliedDate; }
     public void setAppliedDate(Date appliedDate) { this.appliedDate = appliedDate; }
-    public Integer getApplicantId() { return applicantId; }
-    public void setApplicantId(Integer applicantId) { this.applicantId = applicantId; }
+//    public Integer getApplicantId() { return applicantId; }
+//    public void setApplicantId(Integer applicantId) { this.applicantId = applicantId; }
     public Integer getJobId() { return jobId; }
     public void setJobId(Integer jobId) { this.jobId = jobId; }
+    public Applicant getApplicant() { return applicant;}
+    public void setApplicant(Applicant applicant) { this.applicant = applicant; }
 
-    public Application(String applicantName, String appliedPosition, Date appliedDate, Integer applicantId, Integer jobId) {
+    public Application(String applicantName, String appliedPosition, Date appliedDate, Integer jobId, Applicant applicant) {
         this.applicantName = applicantName;
         this.appliedPosition = appliedPosition;
         this.appliedDate = appliedDate;
-        this.applicantId = applicantId;
         this.jobId = jobId;
+        this.applicant = applicant;
     }
 
     public Application() {}

@@ -1,5 +1,6 @@
 // TODO: declare URL where server listens for HTTP requests
 const APPLICATIONS_URL = "http://localhost:8080/api/applications"
+const APPLICANTS_URL = "http://localhost:8080/api/applicants"
 
 // TODO: retrieve all users from the server
 export const findAllApplications = () =>
@@ -11,7 +12,9 @@ export const findApplicationById = (id) =>
     fetch(`${APPLICATIONS_URL}/${id}`)
         .then(response => response.json())
 
-
+export const findApplicationsForApplicant = (id) =>
+    fetch(`${APPLICANTS_URL}/${id}/applications`)
+        .then(response => response.json())
 
 export const deleteApplication = (id) =>
     fetch(`${APPLICATIONS_URL}/${id}`, {
@@ -38,5 +41,5 @@ export const updateApplication = (id, application) =>
 
 // TODO: export all functions as the API to this service
 export default {
-    findAllApplications, findApplicationById, deleteApplication, createApplication, updateApplication
+    findAllApplications, findApplicationById, deleteApplication, createApplication, updateApplication, findApplicationsForApplicant
 }

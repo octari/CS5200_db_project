@@ -4,6 +4,7 @@ package com.example.springtemplate.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.sql.Date;
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
@@ -24,6 +25,10 @@ public class Applicant {
     @JsonIgnore
     private Recruiter recruiter;
 
+    @OneToMany(mappedBy = "applicant")
+    @JsonIgnore
+    private List<Application> applications;
+
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
     public String getFirstName() { return firstName; }
@@ -42,6 +47,8 @@ public class Applicant {
 //    public void setRecruiterId(Integer recruiterId) { this.recruiterId = recruiterId; }
     public Recruiter getRecruiter() {return recruiter;}
     public void setRecruiter(Recruiter recruiter) {this.recruiter = recruiter; }
+    public List<Application> getApplications() { return applications; }
+    public void setApplications(List<Application> applications) { this.applications = applications; }
 
     public Applicant(String first_name, String last_name, String email, String username, String password,  Date dateOfBirth, Recruiter recruiter) {
         this.firstName = first_name;

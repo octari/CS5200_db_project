@@ -33,6 +33,9 @@ const App = () => {
                 <Route path="/recruiters/:recruiterId/applicants" >
                     <RecruiterApplicantList/>
                 </Route>
+                <Route path="/applicants/:id">
+                    <ApplicantFormEditor/>
+                </Route>
                 {/*<Route path="/recruiters/:id/applicants" exact={true}>*/}
                 {/*    /!*<RecruiterFormEditor/>*!/*/}
                 {/*</Route>*/}
