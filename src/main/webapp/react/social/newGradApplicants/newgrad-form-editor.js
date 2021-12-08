@@ -53,7 +53,7 @@ const NewGradApplicantFormEditor = () => {
                     ({...newGradApplicant, password: e.target.value}))}
                    value={newGradApplicant.password}/><br/>
             <label>Data of Birth</label>
-            <input onChange={(e) =>
+            <input type="date" onChange={(e) =>
                 setNewGradApplicant(newGradApplicant =>
                     ({...newGradApplicant, dateOfBirth: e.target.value}))}
                    value={newGradApplicant.dateOfBirth}/><br/>

@@ -53,7 +53,7 @@ const ExperiencedApplicantFormEditor = () => {
                     ({...experiencedApplicant, password: e.target.value}))}
                    value={experiencedApplicant.password}/><br/>
             <label>Data of Birth</label>
-            <input onChange={(e) =>
+            <input type="date" onChange={(e) =>
                 setExperiencedApplicant(experiencedApplicant =>
                     ({...experiencedApplicant, dateOfBirth: e.target.value}))}
                    value={experiencedApplicant.dateOfBirth}/><br/>
