@@ -25,10 +25,10 @@ const RecruiterList = () => {
                         <li className="list-group-item" key={recruiter.id}>
                             <Link to={`/recruiters/${recruiter.id}`}>
                             {recruiter.firstName},
-                            {recruiter.lastName},
-                                {recruiter.email},
-                                {recruiter.phone},
-                                {recruiter.companyId}
+                            {recruiter.lastName}
+                            {/*{recruiter.email},*/}
+                            {/*{recruiter.phone},*/}
+                            {/*{recruiter.companyId}*/}
                             </Link>
                         </li>)
                 }
