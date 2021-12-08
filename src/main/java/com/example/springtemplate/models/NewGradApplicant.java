@@ -3,6 +3,7 @@ package com.example.springtemplate.models;
 import javax.persistence.*;
 
 @Entity
+@Table(name="new_grad_applicants")
 @DiscriminatorValue("NewGrad")
 public class NewGradApplicant extends Applicant {
     private String degree;
