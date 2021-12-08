@@ -1,10 +1,13 @@
-
+const RECRUITER_URL = "http://localhost:8080/api/recruiters"
 const APPLICANTS_URL = "http://localhost:8080/api/applicants"
 
 export const findAllApplicants = () =>
     fetch(APPLICANTS_URL)
         .then(response => response.json())
 
+export const findApplicantsForRecruiter = (recruiterId) =>
+    fetch(`${RECRUITER_URL}/${recruiterId}/applicants`)
+        .then(response => response.json())
 
 export const findApplicantById = (id) =>
     fetch(`${APPLICANTS_URL}/${id}`)
@@ -36,5 +39,5 @@ export const updateApplicant = (id, applicant) =>
 
 // TODO: export all functions as the API to this service
 export default {
-    findAllApplicants, findApplicantById, deleteApplicant, createApplicant, updateApplicant
+    findAllApplicants, findApplicantById, deleteApplicant, createApplicant, updateApplicant, findApplicantsForRecruiter
 }

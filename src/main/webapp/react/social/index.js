@@ -8,19 +8,21 @@ import ApplicationList from "./applications/application-list";
 import ApplicationFormEditor from "./applications/application-form-editor";
 import RecruiterList from "./recruiters/recruiter-list";
 import RecruiterFormEditor from "./recruiters/recruiter-form-editor";
+import RecruiterApplicantList from "./recruiters/recruiter-applicant-list";
+
 
 const {HashRouter, Route} = window.ReactRouterDOM; 
 const App = () => {
     return (
         <div className="container-fluid">
-            <HashRouter>
-                <Route path={["/applicants", "/"]} exact={true}>
-                    <ApplicantList/>
-                </Route>
-                <Route path="/applicants/:id" exact={true}>
-                    <ApplicantFormEditor/>
-                </Route>
-            </HashRouter>
+            {/*<HashRouter>*/}
+            {/*    <Route path={["/applicants", "/"]} exact={true}>*/}
+            {/*        <ApplicantList/>*/}
+            {/*    </Route>*/}
+            {/*    <Route path="/applicants/:id" exact={true}>*/}
+            {/*        <ApplicantFormEditor/>*/}
+            {/*    </Route>*/}
+            {/*</HashRouter>*/}
             <HashRouter>
                 <Route path={["/recruiters", "/"]} exact={true}>
                     <RecruiterList/>
@@ -28,31 +30,37 @@ const App = () => {
                 <Route path="/recruiters/:id" exact={true}>
                     <RecruiterFormEditor/>
                 </Route>
+                <Route path="/recruiters/:recruiterId/applicants" >
+                    <RecruiterApplicantList/>
+                </Route>
+                {/*<Route path="/recruiters/:id/applicants" exact={true}>*/}
+                {/*    /!*<RecruiterFormEditor/>*!/*/}
+                {/*</Route>*/}
             </HashRouter>
-            <HashRouter>
-                <Route path={["/jobs", "/"]} exact={true}>
-                    <JobList/>
-                </Route>
-                <Route path="/jobs/:id" exact={true}>
-                    <JobFormEditor/>
-                </Route>
-            </HashRouter>
-            <HashRouter>
-                <Route path={["/companies", "/"]} exact={true}>
-                    <CompanyList/>
-                </Route>
-                <Route path="/companies/:id" exact={true}>
-                    <CompanyFormEditor/>
-                </Route>
-            </HashRouter>
-            <HashRouter>
-                <Route path={["/applications", "/"]} exact={true}>
-                    <ApplicationList/>
-                </Route>
-                <Route path="/applications/:id" exact={true}>
-                    <ApplicationFormEditor/>
-                </Route>
-            </HashRouter>
+            {/*<HashRouter>*/}
+            {/*    <Route path={["/jobs", "/"]} exact={true}>*/}
+            {/*        <JobList/>*/}
+            {/*    </Route>*/}
+            {/*    <Route path="/jobs/:id" exact={true}>*/}
+            {/*        <JobFormEditor/>*/}
+            {/*    </Route>*/}
+            {/*</HashRouter>*/}
+            {/*<HashRouter>*/}
+            {/*    <Route path={["/companies", "/"]} exact={true}>*/}
+            {/*        <CompanyList/>*/}
+            {/*    </Route>*/}
+            {/*    <Route path="/companies/:id" exact={true}>*/}
+            {/*        <CompanyFormEditor/>*/}
+            {/*    </Route>*/}
+            {/*</HashRouter>*/}
+            {/*<HashRouter>*/}
+            {/*    <Route path={["/applications", "/"]} exact={true}>*/}
+            {/*        <ApplicationList/>*/}
+            {/*    </Route>*/}
+            {/*    <Route path="/applications/:id" exact={true}>*/}
+            {/*        <ApplicationFormEditor/>*/}
+            {/*    </Route>*/}
+            {/*</HashRouter>*/}
         </div>
     );
 }

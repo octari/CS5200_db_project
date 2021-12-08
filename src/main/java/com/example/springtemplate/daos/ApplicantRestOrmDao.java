@@ -1,7 +1,9 @@
 package com.example.springtemplate.daos;
 
 import com.example.springtemplate.models.Applicant;
+import com.example.springtemplate.models.Recruiter;
 import com.example.springtemplate.repositories.ApplicantRestRepository;
+import com.example.springtemplate.repositories.RecruiterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -11,6 +13,9 @@ import java.util.List;
 public class ApplicantRestOrmDao {
   @Autowired
   ApplicantRestRepository applicantRepository;
+
+  @Autowired
+  RecruiterRepository recruiterRepository;
 
   @PostMapping("/api/applicants")
   public Applicant createApplicant(@RequestBody Applicant applicant) {
@@ -28,6 +33,13 @@ public class ApplicantRestOrmDao {
     return applicantRepository.findApplicantById(id);
   }
 
+  @GetMapping("/api/recruiters/{recruiterId}/applicants")
+  public List<Applicant> findApplicantsForRecruiter(
+          @PathVariable("recruiterId") Integer recruiterId) {
+    Recruiter recruiter = recruiterRepository.findById(recruiterId).get();
+    return recruiter.getApplicants();
+  }
+
   @PutMapping("/api/applicants/{applicantId}")
   public Applicant updateApplicant(
           @PathVariable("applicantId") Integer id,
@@ -39,7 +51,6 @@ public class ApplicantRestOrmDao {
     applicant.setUsername(applicantUpdates.getUsername());
     applicant.setPassword(applicantUpdates.getPassword());
     applicant.setDateOfBirth(applicantUpdates.getDateOfBirth());
-    applicant.setRecruiterId(applicantUpdates.getRecruiterId());
 
 
     return applicantRepository.save(applicant);

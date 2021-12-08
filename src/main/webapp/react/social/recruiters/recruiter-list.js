@@ -23,13 +23,18 @@ const RecruiterList = () => {
                 {
                     recruiters.map(recruiter =>
                         <li className="list-group-item" key={recruiter.id}>
-                            <Link to={`/recruiters/${recruiter.id}`}>
+                            {/*<Link to={`/recruiters/${recruiter.id}`}>*/}
+                            <Link to={`/recruiters/${recruiter.id}/applicants`}>
                             {recruiter.firstName},
                             {recruiter.lastName},
                                 {recruiter.email},
                                 {recruiter.phone},
                                 {recruiter.companyId}
+                                </Link>
+                            <Link to={`/recruiters/${recruiter.id}`}>
+                                <button className="btn btn-primary">Edit</button>
                             </Link>
+                            {/*</Link>*/}
                         </li>)
                 }
             </ul>

@@ -1,6 +1,8 @@
 package com.example.springtemplate.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.sql.Date;
 import javax.persistence.*;
 
@@ -16,7 +18,11 @@ public class Applicant {
     private String username;
     private String password;
     private Date dateOfBirth;
-    private Integer recruiterId;
+//    private Integer recruiterId;
+
+    @ManyToOne
+    @JsonIgnore
+    private Recruiter recruiter;
 
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
@@ -32,18 +38,19 @@ public class Applicant {
     public void setPassword(String password) { this.password = password; }
     public Date  getDateOfBirth() { return dateOfBirth; }
     public void setDateOfBirth(Date dateOfBirth) { this.dateOfBirth = dateOfBirth;}
-    public Integer getRecruiterId() { return recruiterId; }
-    public void setRecruiterId(Integer recruiterId) { this.recruiterId = recruiterId; }
+//    public Integer getRecruiterId() { return recruiterId; }
+//    public void setRecruiterId(Integer recruiterId) { this.recruiterId = recruiterId; }
+    public Recruiter getRecruiter() {return recruiter;}
+    public void setRecruiter(Recruiter recruiter) {this.recruiter = recruiter; }
 
-
-    public Applicant(String first_name, String last_name, String email, String username, String password,  Date dateOfBirth, Integer recruiterId) {
+    public Applicant(String first_name, String last_name, String email, String username, String password,  Date dateOfBirth, Recruiter recruiter) {
         this.firstName = first_name;
         this.lastName = last_name;
         this.email = email;
         this.username = username;
         this.password = password;
         this.dateOfBirth = dateOfBirth;
-        this.recruiterId = recruiterId;
+        this.recruiter = recruiter;
     }
 
     public Applicant() {}
