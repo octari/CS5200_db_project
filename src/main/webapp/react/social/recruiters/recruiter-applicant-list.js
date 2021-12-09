@@ -28,6 +28,7 @@ const RecruiterApplicantList = () => {
                             <Link to={`/applicants/${applicant.id}`}>
                                 {applicant.firstName},
                                 {applicant.lastName},
+                                {applicant.recruiterId}
 
                             </Link>
                         </li>)

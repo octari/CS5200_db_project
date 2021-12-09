@@ -28,6 +28,14 @@ export const createApplicant = (applicant) =>
     })
         .then(response => response.json())
 
+export const createApplicantForRecruiter = (recruiterId, section) =>
+    fetch(`${RECRUITER_URL}/${recruiterId}/applicants`, {
+        method: 'POST',
+        body: JSON.stringify(section),
+        headers: {'content-type': 'application/json'}
+    })
+        .then(response => response.json())
+
 
 export const updateApplicant = (id, applicant) =>
     fetch(`${APPLICANTS_URL}/${id}`, {
@@ -39,5 +47,7 @@ export const updateApplicant = (id, applicant) =>
 
 // TODO: export all functions as the API to this service
 export default {
-    findAllApplicants, findApplicantById, deleteApplicant, createApplicant, updateApplicant, findApplicantsForRecruiter
+    findAllApplicants, findApplicantById, deleteApplicant,
+    createApplicant, updateApplicant, findApplicantsForRecruiter,
+    createApplicantForRecruiter
 }

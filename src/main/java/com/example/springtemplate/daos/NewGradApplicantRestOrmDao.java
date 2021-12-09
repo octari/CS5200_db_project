@@ -2,8 +2,10 @@ package com.example.springtemplate.daos;
 
 import com.example.springtemplate.models.Applicant;
 import com.example.springtemplate.models.NewGradApplicant;
+import com.example.springtemplate.models.Recruiter;
 import com.example.springtemplate.repositories.ApplicantRestRepository;
 import com.example.springtemplate.repositories.NewGradApplicantRestRepository;
+import com.example.springtemplate.repositories.RecruiterRestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -13,6 +15,9 @@ import java.util.List;
 public class NewGradApplicantRestOrmDao {
     @Autowired
     NewGradApplicantRestRepository newGradApplicantRepository;
+
+    @Autowired
+    RecruiterRestRepository recruiterRepository;
 
     @PostMapping("/api/newGradApplicants")
     public NewGradApplicant createApplicant(@RequestBody NewGradApplicant newGradApplicant) {
@@ -29,6 +34,13 @@ public class NewGradApplicantRestOrmDao {
             @PathVariable("newGradApplicantId") Integer id) {
         return newGradApplicantRepository.findNewGradApplicantById(id);
     }
+
+//    @GetMapping("/api/recruiters/{recruiterId}/newGradApplicants")
+//    public List<Applicant> findApplicantsForRecruiter(
+//            @PathVariable("recruiterId") Integer recruiterId) {
+//        Recruiter recruiter = recruiterRepository.findById(recruiterId).get();
+//        return recruiter.getApplicants();
+//    }
 
     @PutMapping("/api/newGradApplicants/{newGradApplicantId}")
     public NewGradApplicant updateNewGradApplicant(

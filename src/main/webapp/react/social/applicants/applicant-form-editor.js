@@ -7,6 +7,7 @@ const ApplicantFormEditor = () => {
     const {id} = useParams()
     const [applicant, setApplicant] = useState({})
     const [applications, setApplications] = useState([])
+    const [recruiterId, setRecruiterId] = useState()
     useEffect(() => {
         if(id !== "new") {
             findApplicantById(id)
@@ -19,8 +20,11 @@ const ApplicantFormEditor = () => {
     const deleteApplicant = (id) =>
         applicantService.deleteApplicant(id)
             .then(() => history.back())
-    const createApplicant = (applicant) =>
-        applicantService.createApplicant(applicant)
+    // const createApplicant = (applicant) =>
+    //     applicantService.createApplicant(applicant)
+    //         .then(() => history.back())
+    const createApplicantForRecruiter = (recruiterId, applicant) =>
+        applicantService.createApplicantForRecruiter(recruiterId, applicant)
             .then(() => history.back())
     const updateApplicant = (id, newApplicant) =>
         applicantService.updateApplicant(id, newApplicant)
@@ -65,9 +69,13 @@ const ApplicantFormEditor = () => {
                    value={applicant.dateOfBirth}/><br/>
             <label>RecruiterId</label>
             <input onChange={(e) =>
-                setApplicant(applicant =>
-                    ({...applicant, recruiterId: e.target.value}))}
-                   value={applicant.recruiterId}/><br/>
+                setRecruiterId( e.target.value)}
+                   value={recruiterId}/><br/>
+            {/*<label>RecruiterId</label>*/}
+            {/*<input onChange={(e) =>*/}
+            {/*    setApplicant(applicant =>*/}
+            {/*        ({...applicant, recruiterId: e.target.value}))}*/}
+            {/*       value={applicant.recruiterId}/><br/>*/}
 
             <ul className="list-group">
             {
@@ -85,7 +93,7 @@ const ApplicantFormEditor = () => {
             <button className="btn btn-warning" onClick={() => history.back()}>Cancel</button>
             <button className="btn btn-danger" onClick={() => deleteApplicant(applicant.id)}>Delete</button>
             <button className="btn btn-primary" onClick={() => updateApplicant(applicant.id, applicant)}>Save</button>
-            <button className="btn btn-success" onClick={() => createApplicant(applicant)}>Create</button>
+            <button className="btn btn-success" onClick={() => createApplicantForRecruiter(recruiterId, applicant)}>Create</button>
         </div>
     )
 }

@@ -22,6 +22,16 @@ public class ApplicantRestOrmDao {
     return applicantRepository.save(applicant);
   }
 
+  @PostMapping("/api/recruiters/{recruiterId}/applicants")
+  public Applicant createApplicantForRecruiter(
+          @PathVariable("recruiterId") Integer cid,
+          @RequestBody Applicant applicant) {
+    applicant = applicantRepository.save(applicant);
+    Recruiter recruiter = recruiterRepository.findById(cid).get();
+    applicant.setRecruiter(recruiter);
+    return applicantRepository.save(applicant);
+  }
+
   @GetMapping("/api/applicants")
   public List<Applicant> findAllApplicants() {
     return applicantRepository.findAllApplicants();
