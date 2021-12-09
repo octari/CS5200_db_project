@@ -94,6 +94,10 @@ const RecruiterFormEditor = () => {
             <button className="btn btn-success" onClick={() => createRecruiter(recruiter)}>Create</button>
 
             <h2>New Grad Applicants</h2>
+            <button className="btn btn-primary"
+                    onClick={() => history.push("/newGradApplicants/new")}>
+                Add newGrad Applicant
+            </button>
             <ul className="list-group">
                 {
                     newGradApplicants.map(applicant =>
@@ -107,6 +111,10 @@ const RecruiterFormEditor = () => {
                 }
             </ul>
             <h2>Experienced Applicants</h2>
+            <button className="btn btn-primary"
+                    onClick={() => history.push("/experiencedApplicants/new")}>
+                Add Experienced Applicant
+            </button>
             <ul className="list-group">
                 {
                     experiencedApplicants.map(applicant =>
