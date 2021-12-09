@@ -81,26 +81,24 @@ const NewGradApplicantFormEditor = () => {
                     ({...newGradApplicant, internshipCoop: e.target.value}))}
                    value={newGradApplicant.internshipCoop}/><br/>
 
-            <h2>Applications</h2>
-            <ul className="list-group">
-                {
-                    applications.map(application =>
-                        <li className="list-group-item" key={application.id}>
-                            {/*<Link to={`/applicants/${applicant.id}`}>*/}
-                            {application.applicantName},
-                            {application.appliedPosition},
-
-                            {/*</Link>*/}
-                        </li>)
-                }
-            </ul>
-
 
 
             <button className="btn btn-warning" onClick={() => history.back()}>Cancel</button>
             <button className="btn btn-danger" onClick={() => deleteNewGradApplicant(newGradApplicant.id)}>Delete</button>
             <button className="btn btn-primary" onClick={() => updateNewGradApplicant(newGradApplicant.id, newGradApplicant)}>Save</button>
             <button className="btn btn-success" onClick={() => createNewGradApplicantForRecruiter(recruiterId,newGradApplicant)}>Create</button>
+            <h2>Applications</h2>
+            <ul className="list-group">
+                {
+                    applications.map(application =>
+                         <li className="list-group-item" key={application.id}>
+                             {/*<Link to={`/newGradApplicants/${newGradApplicant.id}`}>*/}
+                                 {application.applicantName},
+                                 {application.appliedPosition}
+                             {/*</Link>*/}
+                         </li>)
+                }
+            </ul>
         </div>
     )
 }

@@ -86,38 +86,41 @@ const RecruiterFormEditor = () => {
             {/*            </li>)*/}
             {/*    }*/}
             {/*</ul>*/}
+
+
+            <button className="btn btn-warning" onClick={() => history.back()}>Cancel</button>
+            <button className="btn btn-danger" onClick={() => deleteRecruiter(recruiter.id)}>Delete</button>
+            <button className="btn btn-primary" onClick={() => updateRecruiter(recruiter.id, recruiter)}>Save</button>
+            <button className="btn btn-success" onClick={() => createRecruiter(recruiter)}>Create</button>
+
             <h2>New Grad Applicants</h2>
             <ul className="list-group">
                 {
                     newGradApplicants.map(applicant =>
-                        <li className="list-group-item" key={applicant.id}>
-                            <Link to={`/newGradApplicants/${applicant.id}`}>
-                                {applicant.firstName},
-                                {applicant.lastName}
+                                              <li className="list-group-item" key={applicant.id}>
+                                                  <Link to={`/newGradApplicants/${applicant.id}`}>
+                                                      {applicant.firstName},
+                                                      {applicant.lastName}
 
-                            </Link>
-                        </li>)
+                                                  </Link>
+                                              </li>)
                 }
             </ul>
             <h2>Experienced Applicants</h2>
             <ul className="list-group">
                 {
                     experiencedApplicants.map(applicant =>
-                        <li className="list-group-item" key={applicant.id}>
-                            <Link to={`/experiencedApplicants/${applicant.id}`}>
-                                {applicant.firstName},
-                                {applicant.lastName}
+                          <li className="list-group-item" key={applicant.id}>
+                              <Link to={`/experiencedApplicants/${applicant.id}`}>
+                                  {applicant.firstName},
+                                  {applicant.lastName}
 
-                            </Link>
-                        </li>)
+                              </Link>
+                          </li>)
                 }
             </ul>
-
-            <button className="btn btn-warning" onClick={() => history.back()}>Cancel</button>
-            <button className="btn btn-danger" onClick={() => deleteRecruiter(recruiter.id)}>Delete</button>
-            <button className="btn btn-primary" onClick={() => updateRecruiter(recruiter.id, recruiter)}>Save</button>
-            <button className="btn btn-success" onClick={() => createRecruiter(recruiter)}>Create</button>
         </div>
+
     )
 }
 

@@ -26,10 +26,10 @@ const RecruiterList = () => {
                             <Link to={`/recruiters/${recruiter.id}`}>
                             {/*<Link to={`/recruiters/${recruiter.id}/applicants`}>*/}
                             {recruiter.firstName},
-                            {recruiter.lastName},
-                                {recruiter.email},
-                                {recruiter.phone},
-                                {recruiter.companyId}
+                            {recruiter.lastName}
+                                {/*{recruiter.email},*/}
+                                {/*{recruiter.phone},*/}
+                                {/*{recruiter.companyId}*/}
                                 {/*</Link>*/}
                             {/*<Link to={`/recruiters/${recruiter.id}`}>*/}
                             {/*    <button className="btn btn-primary">Edit</button>*/}

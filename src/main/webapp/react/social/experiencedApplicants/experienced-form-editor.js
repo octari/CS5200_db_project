@@ -76,25 +76,26 @@ const ExperiencedApplicantFormEditor = () => {
                 setExperiencedApplicant(experiencedApplicant =>
                     ({...experiencedApplicant, workExperience: e.target.value}))}
                    value={experiencedApplicant.workExperience}/><br/>
-            <h2>Applications</h2>
-            <ul className="list-group">
-                {
-                    applications.map(application =>
-                        <li className="list-group-item" key={application.id}>
-                            {/*<Link to={`/applicants/${applicant.id}`}>*/}
-                            {application.applicantName},
-                            {application.appliedPosition},
-
-                            {/*</Link>*/}
-                        </li>)
-                }
-            </ul>
 
 
             <button className="btn btn-warning" onClick={() => history.back()}>Cancel</button>
             <button className="btn btn-danger" onClick={() => deleteExperiencedApplicant(experiencedApplicant.id)}>Delete</button>
             <button className="btn btn-primary" onClick={() => updateExperiencedApplicant(experiencedApplicant.id, experiencedApplicant)}>Save</button>
             <button className="btn btn-success" onClick={() => createExperiencedApplicantForRecruiter(recruiterId, experiencedApplicant)}>Create</button>
+
+            <h2>Applications</h2>
+            <ul className="list-group">
+                {
+                    applications.map(application =>
+                         <li className="list-group-item" key={application.id}>
+                             {/*<Link to={`/applicants/${applicant.id}`}>*/}
+                             {application.applicantName},
+                             {application.appliedPosition}
+
+                             {/*</Link>*/}
+                         </li>)
+                }
+            </ul>
         </div>
     )
 }

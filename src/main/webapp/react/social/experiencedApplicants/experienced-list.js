@@ -24,15 +24,14 @@ const ExperiencedApplicantList = () => {
                     experiencedApplicants.map(experiencedApplicant =>
                         <li className="list-group-item" key={experiencedApplicant.id}>
                             <Link to={`/experiencedApplicants/${experiencedApplicant.id}`}>
-                                {experiencedApplicant.id},
                                 {experiencedApplicant.firstName},
-                                {experiencedApplicant.lastName},
-                                {experiencedApplicant.email},
-                                {experiencedApplicant.username},
-                                {experiencedApplicant.password},
-                                {experiencedApplicant.dateOfBirth},
-                                {experiencedApplicant.recruiterId},
-                                {experiencedApplicant.workExperience}
+                                {experiencedApplicant.lastName}
+                                {/*{experiencedApplicant.email},*/}
+                                {/*{experiencedApplicant.username},*/}
+                                {/*{experiencedApplicant.password},*/}
+                                {/*{experiencedApplicant.dateOfBirth},*/}
+                                {/*{experiencedApplicant.recruiterId},*/}
+                                {/*{experiencedApplicant.workExperience}*/}
 
                             </Link>
                         </li>)

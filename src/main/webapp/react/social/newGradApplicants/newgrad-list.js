@@ -24,16 +24,15 @@ const NewGradApplicantList = () => {
                     newGradApplicants.map(newGradApplicant =>
                         <li className="list-group-item" key={newGradApplicant.id}>
                             <Link to={`/newGradApplicants/${newGradApplicant.id}`}>
-                                {newGradApplicant.id},
                                 {newGradApplicant.firstName},
-                                {newGradApplicant.lastName},
-                                {newGradApplicant.email},
-                                {newGradApplicant.username},
-                                {newGradApplicant.password},
-                                {newGradApplicant.dateOfBirth},
-                                {newGradApplicant.recruiterId},
-                                {newGradApplicant.degree}
-                                {newGradApplicant.internshipCoop}
+                                {newGradApplicant.lastName}
+                                {/*{newGradApplicant.email},*/}
+                                {/*{newGradApplicant.username},*/}
+                                {/*{newGradApplicant.password},*/}
+                                {/*{newGradApplicant.dateOfBirth},*/}
+                                {/*{newGradApplicant.recruiterId},*/}
+                                {/*{newGradApplicant.degree},*/}
+                                {/*{newGradApplicant.internshipCoop}*/}
 
                             </Link>
                         </li>)
