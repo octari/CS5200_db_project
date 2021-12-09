@@ -1,13 +1,17 @@
 import newGradApplicantService from "./newgrad-service"
+import newGradApplicationService from "../applications/application-service"
+import experiencedApplicationService from "../applications/application-service";
 const {useState, useEffect} = React;
 const {useParams, useHistory} = window.ReactRouterDOM;
 
 const NewGradApplicantFormEditor = () => {
     const {id} = useParams()
     const [newGradApplicant, setNewGradApplicant] = useState({})
+    const [applications, setApplications] = useState([])
     useEffect(() => {
         if(id !== "new") {
             findNewGradApplicantById(id)
+            findApplicationsForNewGradApplicant(id)
         }
     }, []);
     const findNewGradApplicantById = (id) =>
@@ -22,9 +26,12 @@ const NewGradApplicantFormEditor = () => {
     const updateNewGradApplicant = (id, newApplicant) =>
         newGradApplicantService.updateNewGradApplicant(id, newApplicant)
             .then(() => history.back())
+    const findApplicationsForNewGradApplicant = (id) =>
+        newGradApplicationService.findApplicationsForNewGradApplicant(id)
+            .then(applications => setApplications(applications))
     return (
         <div>
-            <h2>Experienced Applicant Editor</h2>
+            <h2>NewGrad Applicant Editor</h2>
             <label>Id</label>
             <input value={newGradApplicant.id}/><br/>
             <label>First Name</label>
@@ -72,6 +79,20 @@ const NewGradApplicantFormEditor = () => {
                 setNewGradApplicant(newGradApplicant =>
                     ({...newGradApplicant, internshipCoop: e.target.value}))}
                    value={newGradApplicant.internshipCoop}/><br/>
+
+            <h2>Applications</h2>
+            <ul className="list-group">
+                {
+                    applications.map(application =>
+                        <li className="list-group-item" key={application.id}>
+                            {/*<Link to={`/applicants/${applicant.id}`}>*/}
+                            {application.applicantName},
+                            {application.appliedPosition},
+
+                            {/*</Link>*/}
+                        </li>)
+                }
+            </ul>
 
 
 
