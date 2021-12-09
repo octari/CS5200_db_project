@@ -1,10 +1,10 @@
 package com.example.springtemplate.daos;
 
-import com.example.springtemplate.models.Applicant;
-import com.example.springtemplate.models.Application;
-import com.example.springtemplate.models.Recruiter;
+import com.example.springtemplate.models.*;
 import com.example.springtemplate.repositories.ApplicationRestRepository;
 import com.example.springtemplate.repositories.ApplicantRestRepository;
+import com.example.springtemplate.repositories.ExperiencedApplicantRestRepository;
+import com.example.springtemplate.repositories.NewGradApplicantRestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -17,6 +17,10 @@ public class ApplicationRestOrmDao {
 
     @Autowired
     ApplicantRestRepository applicantRepository;
+    @Autowired
+    NewGradApplicantRestRepository newGradApplicantRepository;
+    @Autowired
+    ExperiencedApplicantRestRepository experiencedApplicantRepository;
 
     @PostMapping("/api/applications")
     public Application createApplication(@RequestBody Application application) {
@@ -39,6 +43,20 @@ public class ApplicationRestOrmDao {
             @PathVariable("applicantId") Integer applicantId) {
         Applicant applicant = applicantRepository.findById(applicantId).get();
         return applicant.getApplications();
+    }
+
+    @GetMapping("/api/experiencedApplicants/{applicantId}/applications")
+    public List<Application> findApplicationsForExperiencedApplicant(
+            @PathVariable("applicantId") Integer applicantId) {
+        ExperiencedApplicant experiencedApplicant = experiencedApplicantRepository.findById(applicantId).get();
+        return experiencedApplicant.getApplications();
+    }
+
+    @GetMapping("/api/newGradApplicants/{applicantId}/applications")
+    public List<Application> findApplicationsForNewGradApplicant(
+            @PathVariable("applicantId") Integer applicantId) {
+        NewGradApplicant newGradApplicant = newGradApplicantRepository.findById(applicantId).get();
+        return newGradApplicant.getApplications();
     }
 
     @PutMapping("/api/applications/{applicantId}")

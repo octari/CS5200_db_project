@@ -1,13 +1,16 @@
 import experiencedApplicantService from "./experienced-service"
+import experiencedApplicationService from "../applications/application-service"
 const {useState, useEffect} = React;
 const {useParams, useHistory} = window.ReactRouterDOM;
 
 const ExperiencedApplicantFormEditor = () => {
     const {id} = useParams()
     const [experiencedApplicant, setExperiencedApplicant] = useState({})
+    const [applications, setApplications] = useState([])
     useEffect(() => {
         if(id !== "new") {
             findExperiencedApplicantById(id)
+            findApplicationsForExperiencedApplicant(id)
         }
     }, []);
     const findExperiencedApplicantById = (id) =>
@@ -22,6 +25,9 @@ const ExperiencedApplicantFormEditor = () => {
     const updateExperiencedApplicant = (id, newApplicant) =>
         experiencedApplicantService.updateExperiencedApplicant(id, newApplicant)
             .then(() => history.back())
+    const findApplicationsForExperiencedApplicant = (id) =>
+        experiencedApplicationService.findApplicationsForExperiencedApplicant(id)
+            .then(applications => setApplications(applications))
     return (
         <div>
             <h2>Experienced Applicant Editor</h2>
@@ -67,7 +73,19 @@ const ExperiencedApplicantFormEditor = () => {
                 setExperiencedApplicant(experiencedApplicant =>
                     ({...experiencedApplicant, workExperience: e.target.value}))}
                    value={experiencedApplicant.workExperience}/><br/>
+            <h2>Applications</h2>
+            <ul className="list-group">
+                {
+                    applications.map(application =>
+                        <li className="list-group-item" key={application.id}>
+                            {/*<Link to={`/applicants/${applicant.id}`}>*/}
+                            {application.applicantName},
+                            {application.appliedPosition},
 
+                            {/*</Link>*/}
+                        </li>)
+                }
+            </ul>
 
 
             <button className="btn btn-warning" onClick={() => history.back()}>Cancel</button>

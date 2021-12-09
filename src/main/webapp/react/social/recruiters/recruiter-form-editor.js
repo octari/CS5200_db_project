@@ -93,8 +93,7 @@ const RecruiterFormEditor = () => {
                         <li className="list-group-item" key={applicant.id}>
                             <Link to={`/newGradApplicants/${applicant.id}`}>
                                 {applicant.firstName},
-                                {applicant.lastName},
-                                {applicant.recruiterId}
+                                {applicant.lastName}
 
                             </Link>
                         </li>)
@@ -107,8 +106,7 @@ const RecruiterFormEditor = () => {
                         <li className="list-group-item" key={applicant.id}>
                             <Link to={`/experiencedApplicants/${applicant.id}`}>
                                 {applicant.firstName},
-                                {applicant.lastName},
-                                {applicant.recruiterId}
+                                {applicant.lastName}
 
                             </Link>
                         </li>)

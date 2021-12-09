@@ -45,9 +45,9 @@ public class Recruiter {
     public Integer getCompanyId() { return companyId; }
     public void setCompanyId(Integer companyId) { this.companyId = companyId; }
     public List<Applicant> getApplicants() { return applicants; }
-    public void setNewGradApplicants(List<Applicant> applicants) { this.applicants = applicants; }
+    public void setApplicants(List<Applicant> applicants) { this.applicants = applicants; }
     public List<NewGradApplicant> getNewGradApplicants() { return newGradApplicants; }
-    public void setApplicants(List<NewGradApplicant> newGradApplicants) { this.newGradApplicants = newGradApplicants; }
+    public void setNewGradApplicants(List<NewGradApplicant> newGradApplicants) { this.newGradApplicants = newGradApplicants; }
     public List<ExperiencedApplicant> getExperiencedApplicants() { return experiencedApplicants; }
     public void setExperiencedApplicants(List<ExperiencedApplicant> experiencedApplicants) { this.experiencedApplicants = experiencedApplicants; }
 
