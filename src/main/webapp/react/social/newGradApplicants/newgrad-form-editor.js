@@ -1,6 +1,5 @@
 import newGradApplicantService from "./newgrad-service"
 import newGradApplicationService from "../applications/application-service"
-import experiencedApplicationService from "../applications/application-service";
 const {useState, useEffect} = React;
 const {useParams, useHistory} = window.ReactRouterDOM;
 
@@ -8,6 +7,7 @@ const NewGradApplicantFormEditor = () => {
     const {id} = useParams()
     const [newGradApplicant, setNewGradApplicant] = useState({})
     const [applications, setApplications] = useState([])
+    const [recruiterId, setRecruiterId] = useState()
     useEffect(() => {
         if(id !== "new") {
             findNewGradApplicantById(id)
@@ -20,8 +20,10 @@ const NewGradApplicantFormEditor = () => {
     const deleteNewGradApplicant = (id) =>
         newGradApplicantService.deleteNewGradApplicant(id)
             .then(() => history.back())
-    const createNewGradApplicant = (newGradApplicant) =>
-        newGradApplicantService.createNewGradApplicant(newGradApplicant)
+    // const createNewGradApplicant = (newGradApplicant) =>
+    //     newGradApplicantService.createNewGradApplicant(newGradApplicant)
+    const createNewGradApplicantForRecruiter = (recruiterId, newGradApplicant) =>
+        newGradApplicantService.createNewGradApplicantForRecruiter(recruiterId, newGradApplicant)
             .then(() => history.back())
     const updateNewGradApplicant = (id, newApplicant) =>
         newGradApplicantService.updateNewGradApplicant(id, newApplicant)
@@ -66,9 +68,8 @@ const NewGradApplicantFormEditor = () => {
                    value={newGradApplicant.dateOfBirth}/><br/>
             <label>RecruiterId</label>
             <input onChange={(e) =>
-                setNewGradApplicant(newGradApplicant =>
-                    ({...newGradApplicant, recruiterId: e.target.value}))}
-                   value={newGradApplicant.recruiterId}/><br/>
+                setRecruiterId( e.target.value)}
+                   value={recruiterId}/><br/>
             <label>Degree</label>
             <input onChange={(e) =>
                 setNewGradApplicant(newGradApplicant =>
@@ -99,7 +100,7 @@ const NewGradApplicantFormEditor = () => {
             <button className="btn btn-warning" onClick={() => history.back()}>Cancel</button>
             <button className="btn btn-danger" onClick={() => deleteNewGradApplicant(newGradApplicant.id)}>Delete</button>
             <button className="btn btn-primary" onClick={() => updateNewGradApplicant(newGradApplicant.id, newGradApplicant)}>Save</button>
-            <button className="btn btn-success" onClick={() => createNewGradApplicant(newGradApplicant)}>Create</button>
+            <button className="btn btn-success" onClick={() => createNewGradApplicantForRecruiter(recruiterId,newGradApplicant)}>Create</button>
         </div>
     )
 }

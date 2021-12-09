@@ -27,6 +27,14 @@ export const createNewGradApplicant = (applicant) =>
     })
         .then(response => response.json())
 
+export const createNewGradApplicantForRecruiter = (recruiterId, section) =>
+    fetch(`${RECRUITER_URL}/${recruiterId}/newGradApplicants`, {
+        method: 'POST',
+        body: JSON.stringify(section),
+        headers: {'content-type': 'application/json'}
+    })
+        .then(response => response.json())
+
 
 export const updateNewGradApplicant = (id, applicant) =>
     fetch(`${NEW_GRAD_APPLICANTS_URL}/${id}`, {
@@ -40,5 +48,6 @@ export const updateNewGradApplicant = (id, applicant) =>
 export default {
     findAllNewGradApplicants, findNewGradApplicantById,
     deleteNewGradApplicant, createNewGradApplicant,
-    updateNewGradApplicant, findNewGradApplicantsForRecruiter
+    updateNewGradApplicant, findNewGradApplicantsForRecruiter,
+    createNewGradApplicantForRecruiter
 }

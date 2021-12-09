@@ -22,12 +22,22 @@ public class ExperiencedApplicantRestOrmDao {
     RecruiterRestRepository recruiterRepository;
 
     @PostMapping("/api/experiencedApplicants")
-    public ExperiencedApplicant createApplicant(@RequestBody ExperiencedApplicant experiencedApplicant) {
+    public ExperiencedApplicant createExperiencedApplicant(@RequestBody ExperiencedApplicant experiencedApplicant) {
+        return experiencedApplicantRepository.save(experiencedApplicant);
+    }
+
+    @PostMapping("/api/recruiters/{recruiterId}/experiencedApplicants")
+    public Applicant createExperiencedApplicantForRecruiter(
+            @PathVariable("recruiterId") Integer cid,
+            @RequestBody ExperiencedApplicant experiencedApplicant) {
+        experiencedApplicant = experiencedApplicantRepository.save(experiencedApplicant);
+        Recruiter recruiter = recruiterRepository.findById(cid).get();
+        experiencedApplicant.setRecruiter(recruiter);
         return experiencedApplicantRepository.save(experiencedApplicant);
     }
 
     @GetMapping("/api/experiencedApplicants")
-    public List<ExperiencedApplicant> findAllExperiencedGradApplicants() {
+    public List<ExperiencedApplicant> findAllExperiencedApplicants() {
         return (List<ExperiencedApplicant>) experiencedApplicantRepository.findAll();
     }
 

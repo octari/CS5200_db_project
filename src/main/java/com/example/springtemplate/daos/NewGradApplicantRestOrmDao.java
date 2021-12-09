@@ -24,6 +24,16 @@ public class NewGradApplicantRestOrmDao {
         return newGradApplicantRepository.save(newGradApplicant);
     }
 
+    @PostMapping("/api/recruiters/{recruiterId}/newGradApplicants")
+    public Applicant createNewGradApplicantForRecruiter(
+            @PathVariable("recruiterId") Integer cid,
+            @RequestBody NewGradApplicant newGradApplicant) {
+        newGradApplicant = newGradApplicantRepository.save(newGradApplicant);
+        Recruiter recruiter = recruiterRepository.findById(cid).get();
+        newGradApplicant.setRecruiter(recruiter);
+        return newGradApplicantRepository.save(newGradApplicant);
+    }
+
     @GetMapping("/api/newGradApplicants")
     public List<NewGradApplicant> findAllNewGradApplicants() {
         return (List<NewGradApplicant>) newGradApplicantRepository.findAll();

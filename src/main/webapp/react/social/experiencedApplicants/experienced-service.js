@@ -27,6 +27,13 @@ export const createExperiencedApplicant = (applicant) =>
     })
         .then(response => response.json())
 
+export const createExperiencedApplicantForRecruiter = (recruiterId, section) =>
+    fetch(`${RECRUITER_URL}/${recruiterId}/experiencedApplicants`, {
+        method: 'POST',
+        body: JSON.stringify(section),
+        headers: {'content-type': 'application/json'}
+    })
+        .then(response => response.json())
 
 export const updateExperiencedApplicant = (id, applicant) =>
     fetch(`${EXPERIENCED_APPLICANTS_URL}/${id}`, {
@@ -40,5 +47,6 @@ export const updateExperiencedApplicant = (id, applicant) =>
 export default {
     findAllExperiencedApplicants, findExperiencedApplicantById,
     deleteExperiencedApplicant, createExperiencedApplicant,
-    updateExperiencedApplicant, findExperiencedApplicantsForRecruiter
+    updateExperiencedApplicant, findExperiencedApplicantsForRecruiter,
+    createExperiencedApplicantForRecruiter
 }

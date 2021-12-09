@@ -1,5 +1,6 @@
 import experiencedApplicantService from "./experienced-service"
 import experiencedApplicationService from "../applications/application-service"
+
 const {useState, useEffect} = React;
 const {useParams, useHistory} = window.ReactRouterDOM;
 
@@ -7,6 +8,7 @@ const ExperiencedApplicantFormEditor = () => {
     const {id} = useParams()
     const [experiencedApplicant, setExperiencedApplicant] = useState({})
     const [applications, setApplications] = useState([])
+    const [recruiterId, setRecruiterId] = useState()
     useEffect(() => {
         if(id !== "new") {
             findExperiencedApplicantById(id)
@@ -19,8 +21,10 @@ const ExperiencedApplicantFormEditor = () => {
     const deleteExperiencedApplicant = (id) =>
         experiencedApplicantService.deleteExperiencedApplicant(id)
             .then(() => history.back())
-    const createExperiencedApplicant = (newGradApplicant) =>
-        experiencedApplicantService.createExperiencedApplicant(newGradApplicant)
+    // const createExperiencedApplicant = (newGradApplicant) =>
+    //     experiencedApplicantService.createExperiencedApplicant(newGradApplicant)
+    const createExperiencedApplicantForRecruiter = (recruiterId, experiencedApplicant) =>
+        newGradApplicantService.createExperiencedApplicantForRecruiter(recruiterId, experiencedApplicant)
             .then(() => history.back())
     const updateExperiencedApplicant = (id, newApplicant) =>
         experiencedApplicantService.updateExperiencedApplicant(id, newApplicant)
@@ -65,9 +69,8 @@ const ExperiencedApplicantFormEditor = () => {
                    value={experiencedApplicant.dateOfBirth}/><br/>
             <label>RecruiterId</label>
             <input onChange={(e) =>
-                setExperiencedApplicant(experiencedApplicant =>
-                    ({...experiencedApplicant, recruiterId: e.target.value}))}
-                   value={experiencedApplicant.recruiterId}/><br/>
+                setRecruiterId( e.target.value)}
+                   value={recruiterId}/><br/>
             <label>Work Experience</label>
             <input onChange={(e) =>
                 setExperiencedApplicant(experiencedApplicant =>
@@ -91,7 +94,7 @@ const ExperiencedApplicantFormEditor = () => {
             <button className="btn btn-warning" onClick={() => history.back()}>Cancel</button>
             <button className="btn btn-danger" onClick={() => deleteExperiencedApplicant(experiencedApplicant.id)}>Delete</button>
             <button className="btn btn-primary" onClick={() => updateExperiencedApplicant(experiencedApplicant.id, experiencedApplicant)}>Save</button>
-            <button className="btn btn-success" onClick={() => createExperiencedApplicant(experiencedApplicant)}>Create</button>
+            <button className="btn btn-success" onClick={() => createExperiencedApplicantForRecruiter(recruiterId, experiencedApplicant)}>Create</button>
         </div>
     )
 }
