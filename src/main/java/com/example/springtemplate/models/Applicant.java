@@ -43,8 +43,6 @@ public class Applicant {
     public void setPassword(String password) { this.password = password; }
     public Date  getDateOfBirth() { return dateOfBirth; }
     public void setDateOfBirth(Date dateOfBirth) { this.dateOfBirth = dateOfBirth;}
-//    public Integer getRecruiterId() { return recruiterId; }
-//    public void setRecruiterId(Integer recruiterId) { this.recruiterId = recruiterId; }
     public Recruiter getRecruiter() {return recruiter;}
     public void setRecruiter(Recruiter recruiter) {this.recruiter = recruiter; }
     public List<Application> getApplications() { return applications; }

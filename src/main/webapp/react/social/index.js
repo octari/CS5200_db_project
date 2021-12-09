@@ -9,7 +9,10 @@ import ApplicationFormEditor from "./applications/application-form-editor";
 import RecruiterList from "./recruiters/recruiter-list";
 import RecruiterFormEditor from "./recruiters/recruiter-form-editor";
 import RecruiterApplicantList from "./recruiters/recruiter-applicant-list";
-
+import ExperiencedApplicantList from "./experiencedApplicants/experienced-list";
+import ExperiencedApplicantFormEditor from "./experiencedApplicants/experienced-form-editor";
+import NewGradApplicantList from "./newGradApplicants/newgrad-list";
+import NewGradApplicantFormEditor from "./newGradApplicants/newgrad-form-editor";
 
 const {HashRouter, Route} = window.ReactRouterDOM; 
 const App = () => {
@@ -64,6 +67,22 @@ const App = () => {
             {/*        <ApplicationFormEditor/>*/}
             {/*    </Route>*/}
             {/*</HashRouter>*/}
+            <HashRouter>
+                <Route path={["/experiencedApplicants", "/"]} exact={true}>
+                    <ExperiencedApplicantList/>
+                </Route>
+                <Route path="/experiencedApplicants/:id" exact={true}>
+                    <ExperiencedApplicantFormEditor/>
+                </Route>
+            </HashRouter>
+            <HashRouter>
+                <Route path={["/newGradApplicants", "/"]} exact={true}>
+                    <NewGradApplicantList/>
+                </Route>
+                <Route path="/newGradApplicants/:id" exact={true}>
+                    <NewGradApplicantFormEditor/>
+                </Route>
+            </HashRouter>
         </div>
     );
 }
