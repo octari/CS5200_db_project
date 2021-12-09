@@ -2,6 +2,7 @@ package com.example.springtemplate.models;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Where;
 
 import java.sql.Date;
 import java.util.List;

@@ -1,4 +1,4 @@
-
+const RECRUITER_URL = "http://localhost:8080/api/recruiters"
 const EXPERIENCED_APPLICANTS_URL = "http://localhost:8080/api/experiencedApplicants"
 
 export const findAllExperiencedApplicants = () =>
@@ -10,7 +10,9 @@ export const findExperiencedApplicantById = (id) =>
     fetch(`${EXPERIENCED_APPLICANTS_URL}/${id}`)
         .then(response => response.json())
 
-
+export const findExperiencedApplicantsForRecruiter = (recruiterId) =>
+    fetch(`${RECRUITER_URL}/${recruiterId}/experiencedApplicants`)
+        .then(response => response.json())
 
 export const deleteExperiencedApplicant = (id) =>
     fetch(`${EXPERIENCED_APPLICANTS_URL}/${id}`, {
@@ -36,5 +38,7 @@ export const updateExperiencedApplicant = (id, applicant) =>
 
 // TODO: export all functions as the API to this service
 export default {
-    findAllExperiencedApplicants, findExperiencedApplicantById, deleteExperiencedApplicant, createExperiencedApplicant, updateExperiencedApplicant
+    findAllExperiencedApplicants, findExperiencedApplicantById,
+    deleteExperiencedApplicant, createExperiencedApplicant,
+    updateExperiencedApplicant, findExperiencedApplicantsForRecruiter
 }

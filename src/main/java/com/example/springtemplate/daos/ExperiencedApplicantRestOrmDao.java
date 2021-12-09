@@ -3,9 +3,11 @@ package com.example.springtemplate.daos;
 import com.example.springtemplate.models.Applicant;
 import com.example.springtemplate.models.ExperiencedApplicant;
 import com.example.springtemplate.models.NewGradApplicant;
+import com.example.springtemplate.models.Recruiter;
 import com.example.springtemplate.repositories.ApplicantRestRepository;
 import com.example.springtemplate.repositories.ExperiencedApplicantRestRepository;
 import com.example.springtemplate.repositories.NewGradApplicantRestRepository;
+import com.example.springtemplate.repositories.RecruiterRestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -15,6 +17,9 @@ import java.util.List;
 public class ExperiencedApplicantRestOrmDao {
     @Autowired
     ExperiencedApplicantRestRepository experiencedApplicantRepository;
+
+    @Autowired
+    RecruiterRestRepository recruiterRepository;
 
     @PostMapping("/api/experiencedApplicants")
     public ExperiencedApplicant createApplicant(@RequestBody ExperiencedApplicant experiencedApplicant) {
@@ -30,6 +35,13 @@ public class ExperiencedApplicantRestOrmDao {
     public ExperiencedApplicant findExperiencedApplicantById(
             @PathVariable("experiencedApplicantId") Integer id) {
         return experiencedApplicantRepository.findExperiencedApplicantById(id);
+    }
+
+    @GetMapping("/api/recruiters/{recruiterId}/experiencedApplicants")
+    public List<ExperiencedApplicant> findExperiencedApplicantsForRecruiter(
+            @PathVariable("recruiterId") Integer recruiterId) {
+        Recruiter recruiter = recruiterRepository.findById(recruiterId).get();
+        return recruiter.getExperiencedApplicants();
     }
 
     @PutMapping("/api/experiencedApplicants/{experiencedApplicantId}")

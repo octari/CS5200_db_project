@@ -35,12 +35,12 @@ public class NewGradApplicantRestOrmDao {
         return newGradApplicantRepository.findNewGradApplicantById(id);
     }
 
-//    @GetMapping("/api/recruiters/{recruiterId}/newGradApplicants")
-//    public List<Applicant> findApplicantsForRecruiter(
-//            @PathVariable("recruiterId") Integer recruiterId) {
-//        Recruiter recruiter = recruiterRepository.findById(recruiterId).get();
-//        return recruiter.getApplicants();
-//    }
+    @GetMapping("/api/recruiters/{recruiterId}/newGradApplicants")
+    public List<NewGradApplicant> findNewGradApplicantsForRecruiter(
+            @PathVariable("recruiterId") Integer recruiterId) {
+        Recruiter recruiter = recruiterRepository.findById(recruiterId).get();
+        return recruiter.getNewGradApplicants();
+    }
 
     @PutMapping("/api/newGradApplicants/{newGradApplicantId}")
     public NewGradApplicant updateNewGradApplicant(
