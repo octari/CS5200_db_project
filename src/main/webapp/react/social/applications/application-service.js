@@ -14,12 +14,12 @@ export const findApplicationById = (id) =>
     fetch(`${APPLICATIONS_URL}/${id}`)
         .then(response => response.json())
 
-export const findApplicationsForApplicant = (id) =>
-    fetch(`${EXPERIENCED_APPLICANTS_URL}/${id}/applications`)
-        .then(response => response.json())
+// export const findApplicationsForApplicant = (id) =>
+//     fetch(`${APPLICANTS_URL}/${id}/applications`)
+//         .then(response => response.json())
 
 export const findApplicationsForExperiencedApplicant = (id) =>
-    fetch(`${APPLICANTS_URL}/${id}/applications`)
+    fetch(`${EXPERIENCED_APPLICANTS_URL}/${id}/applications`)
         .then(response => response.json())
 
 export const findApplicationsForNewGradApplicant = (id) =>
@@ -52,6 +52,7 @@ export const updateApplication = (id, application) =>
 // TODO: export all functions as the API to this service
 export default {
     findAllApplications, findApplicationById, deleteApplication,
-    createApplication, updateApplication, findApplicationsForApplicant,
+    createApplication, updateApplication,
+    // findApplicationsForApplicant,
     findApplicationsForNewGradApplicant, findApplicationsForExperiencedApplicant
 }
