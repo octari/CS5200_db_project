@@ -1,5 +1,5 @@
 import experiencedApplicantService from "./experienced-service"
-import experiencedApplicationService from "../applications/application-service"
+import applicationService from "../applications/application-service"
 
 const {useState, useEffect} = React;
 const {useParams, useHistory} = window.ReactRouterDOM;
@@ -24,13 +24,13 @@ const ExperiencedApplicantFormEditor = () => {
     // const createExperiencedApplicant = (newGradApplicant) =>
     //     experiencedApplicantService.createExperiencedApplicant(newGradApplicant)
     const createExperiencedApplicantForRecruiter = (recruiterId, experiencedApplicant) =>
-        newGradApplicantService.createExperiencedApplicantForRecruiter(recruiterId, experiencedApplicant)
+        experiencedApplicantService.createExperiencedApplicantForRecruiter(recruiterId, experiencedApplicant)
             .then(() => history.back())
     const updateExperiencedApplicant = (id, newApplicant) =>
         experiencedApplicantService.updateExperiencedApplicant(id, newApplicant)
             .then(() => history.back())
     const findApplicationsForExperiencedApplicant = (id) =>
-        experiencedApplicationService.findApplicationsForExperiencedApplicant(id)
+        applicationService.findApplicationsForExperiencedApplicant(id)
             .then(applications => setApplications(applications))
     return (
         <div>
@@ -84,14 +84,17 @@ const ExperiencedApplicantFormEditor = () => {
             <button className="btn btn-success" onClick={() => createExperiencedApplicantForRecruiter(recruiterId, experiencedApplicant)}>Create</button>
 
             <h2>Applications</h2>
+            <button className="btn btn-primary"
+                    onClick={() => history.push("/applications/new")}>
+                Add Application
+            </button>
             <ul className="list-group">
                 {
                     applications.map(application =>
                          <li className="list-group-item" key={application.id}>
-                             {/*<Link to={`/applicants/${applicant.id}`}>*/}
-                             {application.applicantName},
-                             {application.appliedPosition}
-
+                             {/*<Link to={`/applications/${application.id}`}>*/}
+                                 {application.applicantName},
+                                 {application.appliedPosition}
                              {/*</Link>*/}
                          </li>)
                 }

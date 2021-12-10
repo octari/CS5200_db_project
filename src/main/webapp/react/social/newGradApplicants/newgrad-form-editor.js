@@ -1,5 +1,6 @@
 import newGradApplicantService from "./newgrad-service"
-import newGradApplicationService from "../applications/application-service"
+import applicationService from "../applications/application-service"
+
 const {useState, useEffect} = React;
 const {useParams, useHistory} = window.ReactRouterDOM;
 
@@ -29,7 +30,7 @@ const NewGradApplicantFormEditor = () => {
         newGradApplicantService.updateNewGradApplicant(id, newApplicant)
             .then(() => history.back())
     const findApplicationsForNewGradApplicant = (id) =>
-        newGradApplicationService.findApplicationsForNewGradApplicant(id)
+        applicationService.findApplicationsForNewGradApplicant(id)
             .then(applications => setApplications(applications))
     return (
         <div>
@@ -88,11 +89,15 @@ const NewGradApplicantFormEditor = () => {
             <button className="btn btn-primary" onClick={() => updateNewGradApplicant(newGradApplicant.id, newGradApplicant)}>Save</button>
             <button className="btn btn-success" onClick={() => createNewGradApplicantForRecruiter(recruiterId,newGradApplicant)}>Create</button>
             <h2>Applications</h2>
+            <button className="btn btn-primary"
+                    onClick={() => history.push("/applications/new")}>
+                Add Application
+            </button>
             <ul className="list-group">
                 {
                     applications.map(application =>
                          <li className="list-group-item" key={application.id}>
-                             {/*<Link to={`/newGradApplicants/${newGradApplicant.id}`}>*/}
+                             {/*<Link to={`/applications/${application.id}`}>*/}
                                  {application.applicantName},
                                  {application.appliedPosition}
                              {/*</Link>*/}
