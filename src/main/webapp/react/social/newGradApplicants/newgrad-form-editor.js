@@ -6,6 +6,7 @@ const {useParams, useHistory} = window.ReactRouterDOM;
 
 const NewGradApplicantFormEditor = () => {
     const {id} = useParams()
+    const history = useHistory()
     const [newGradApplicant, setNewGradApplicant] = useState({})
     const [applications, setApplications] = useState([])
     const [recruiterId, setRecruiterId] = useState()

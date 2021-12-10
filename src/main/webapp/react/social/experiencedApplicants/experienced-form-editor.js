@@ -5,6 +5,7 @@ const {useState, useEffect} = React;
 const {useParams, useHistory} = window.ReactRouterDOM;
 
 const ExperiencedApplicantFormEditor = () => {
+    const history = useHistory()
     const {id} = useParams()
     const [experiencedApplicant, setExperiencedApplicant] = useState({})
     const [applications, setApplications] = useState([])

@@ -3,10 +3,11 @@ import applicantService from "../applicants/applicant-service"
 import newGradService from "../newGradApplicants/newgrad-service"
 import experiencedService from "../experiencedApplicants/experienced-service"
 const {useState, useEffect} = React;
-const {Link, useParams} = window.ReactRouterDOM;
+const {Link,useHistory, useParams} = window.ReactRouterDOM;
 
 const RecruiterFormEditor = () => {
     const {id} = useParams()
+    const history = useHistory()
     const [recruiter, setRecruiter] = useState({})
     const [applicants, setApplicants] = useState([])
     const [newGradApplicants, setNewGradApplicants] = useState([])
