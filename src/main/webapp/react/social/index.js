@@ -59,14 +59,7 @@ const App = () => {
             {/*        <CompanyFormEditor/>*/}
             {/*    </Route>*/}
             {/*</HashRouter>*/}
-            {/*<HashRouter>*/}
-            {/*    <Route path={["/applications", "/"]} exact={true}>*/}
-            {/*        <ApplicationList/>*/}
-            {/*    </Route>*/}
-            {/*    <Route path="/applications/:id" exact={true}>*/}
-            {/*        <ApplicationFormEditor/>*/}
-            {/*    </Route>*/}
-            {/*</HashRouter>*/}
+
             <HashRouter>
                 <Route path={["/experiencedApplicants", "/"]} exact={true}>
                     <ExperiencedApplicantList/>
@@ -81,6 +74,17 @@ const App = () => {
                 </Route>
                 <Route path="/newGradApplicants/:id" exact={true}>
                     <NewGradApplicantFormEditor/>
+                </Route>
+            </HashRouter>
+            <HashRouter>
+                {/*<Route path={["/applications", "/"]} exact={true}>*/}
+                {/*    <ApplicationList/>*/}
+                {/*</Route>*/}
+                <Route path="/applications" exact={true}>
+                    <ApplicationList/>
+                </Route>
+                <Route path="/applications/:id" exact={true}>
+                    <ApplicationFormEditor/>
                 </Route>
             </HashRouter>
         </div>

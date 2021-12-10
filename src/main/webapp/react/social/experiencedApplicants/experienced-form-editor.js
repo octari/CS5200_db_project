@@ -2,7 +2,7 @@ import experiencedApplicantService from "./experienced-service"
 import applicationService from "../applications/application-service"
 
 const {useState, useEffect} = React;
-const {useParams, useHistory} = window.ReactRouterDOM;
+const {Link, useParams, useHistory} = window.ReactRouterDOM;
 
 const ExperiencedApplicantFormEditor = () => {
     const history = useHistory()
@@ -93,10 +93,11 @@ const ExperiencedApplicantFormEditor = () => {
                 {
                     applications.map(application =>
                          <li className="list-group-item" key={application.id}>
-                             {/*<Link to={`/applications/${application.id}`}>*/}
-                                 {application.applicantName},
-                                 {application.appliedPosition}
-                             {/*</Link>*/}
+                             <Link to={`/applications/${application.id}`}>
+                             {application.applicantName},
+                             {application.appliedPosition},
+                             {application.appliedDate}
+                             </Link>
                          </li>)
                 }
             </ul>

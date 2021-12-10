@@ -2,7 +2,7 @@ import newGradApplicantService from "./newgrad-service"
 import applicationService from "../applications/application-service"
 
 const {useState, useEffect} = React;
-const {useParams, useHistory} = window.ReactRouterDOM;
+const {Link, useParams, useHistory} = window.ReactRouterDOM;
 
 const NewGradApplicantFormEditor = () => {
     const {id} = useParams()
@@ -98,10 +98,11 @@ const NewGradApplicantFormEditor = () => {
                 {
                     applications.map(application =>
                          <li className="list-group-item" key={application.id}>
-                             {/*<Link to={`/applications/${application.id}`}>*/}
+                             <Link to={`/applications/${application.id}`}>
                                  {application.applicantName},
-                                 {application.appliedPosition}
-                             {/*</Link>*/}
+                                 {application.appliedPosition},
+                                 {application.appliedDate}
+                             </Link>
                          </li>)
                 }
             </ul>
