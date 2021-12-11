@@ -1,4 +1,5 @@
 const JOBS_URL = "http://localhost:8080/api/jobs"
+const APPLICATIONS_URL = "http://localhost:8080/api/applications"
 
 export const findAllJobs = () =>
     fetch(JOBS_URL)
@@ -34,6 +35,11 @@ export const updateJob = (id, job) =>
         .then(response => response.json())
 
 
+export const findJobsForApplication = (id) =>
+    fetch(`${APPLICATIONS_URL}/${id}/jobs`)
+        .then(response => response.json())
+
+
 export default {
-    findAllJobs, findJobById, deleteJob, createJob, updateJob
+    findAllJobs, findJobById, deleteJob, createJob, updateJob, findJobsForApplication
 }

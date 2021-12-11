@@ -68,7 +68,7 @@ public class ApplicationRestOrmDao {
         application.setAppliedPosition(applicantUpdates.getAppliedPosition());
         application.setAppliedDate(applicantUpdates.getAppliedDate());
         application.setApplicant(applicantUpdates.getApplicant());
-        application.setJobId(applicantUpdates.getJobId());
+//        application.setJobId(applicantUpdates.getJobId());
 
         return applicationRepository.save(application);
     }

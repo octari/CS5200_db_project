@@ -1,13 +1,17 @@
 import applicationService from "./application-service"
+import jobService from "./job-service"
+import {findJobsForApplication} from "../jobs/job-service";
 const {useState, useEffect} = React;
 const {useParams, useHistory} = window.ReactRouterDOM;
 
 const ApplicationFormEditor = () => {
     const {id} = useParams()
     const [application, setApplication] = useState({})
+    const [job, setJob] = useState([])
     useEffect(() => {
         if(id !== "new") {
             findApplicationById(id)
+            findJobsForApplication(id)
         }
     }, []);
     const findApplicationById = (id) =>
@@ -22,6 +26,10 @@ const ApplicationFormEditor = () => {
     const updateApplication = (id, newApplication) =>
         applicationService.updateApplication(id, newApplication)
             .then(() => history.back())
+    const findJobsForApplication = (id) =>
+        jobService.findJobsForApplication(id)
+            .then(jobs => setJob(jobs))
+
     return (
         <div>
             <h2>Application Editor</h2>
@@ -67,6 +75,26 @@ const ApplicationFormEditor = () => {
                     className="btn btn-primary">Save</button>
             <button onClick={() => createApplication(application)}
                     className="btn btn-success">Create</button>
+
+
+            <h2>Jobs</h2>
+            {/*<button className="btn btn-primary"*/}
+            {/*        onClick={() => history1.push("/applications/new")}>*/}
+            {/*    Add Job*/}
+            {/*</button>*/}
+            <ul className="list-group">
+                {
+                    job.map(job =>
+                        <li className="list-group-item" key={job.id}>
+                            {/*<Link to={`/applications/${job.id}`}>*/}
+                                {job.companyName},
+                                {job.jobTitle},
+                                {job.level}
+                            {/*</Link>*/}
+                        </li>)
+                }
+            </ul>
+
         </div>
     )
 }

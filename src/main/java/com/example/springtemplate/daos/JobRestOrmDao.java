@@ -1,6 +1,9 @@
 package com.example.springtemplate.daos;
 
+import com.example.springtemplate.models.Application;
+import com.example.springtemplate.models.ExperiencedApplicant;
 import com.example.springtemplate.models.Job;
+import com.example.springtemplate.repositories.ApplicationRestRepository;
 import com.example.springtemplate.repositories.JobRestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +14,9 @@ import java.util.List;
 public class JobRestOrmDao {
   @Autowired
   JobRestRepository jobRepository;
+
+  @Autowired
+  ApplicationRestRepository applicationRepository;
 
   @PostMapping("/api/jobs")
   public Job createJob(@RequestBody Job job) {
@@ -37,6 +43,7 @@ public class JobRestOrmDao {
     job.setJobTitle(jobUpdates.getJobTitle());
     job.setLevel(jobUpdates.getLevel());
     job.setCompanyId(jobUpdates.getCompanyId());
+    job.setApplication(jobUpdates.getApplication());
 
     return jobRepository.save(job);
   }
@@ -46,4 +53,13 @@ public class JobRestOrmDao {
           @PathVariable("jobId") Integer id) {
     jobRepository.deleteById(id);
   }
+
+
+  @GetMapping("/api/applications/{applicationId}/jobs")
+  public List<Job> findJobsForApplications(
+          @PathVariable("applicationId") Integer applicationId) {
+    Application application = applicationRepository.findById(applicationId).get();
+    return application.getJobs();
+  }
+
 }
