@@ -5,7 +5,7 @@ const {useState, useEffect} = React;
 const {Link, useParams, useHistory} = window.ReactRouterDOM;
 
 const ExperiencedApplicantFormEditor = () => {
-    const history = useHistory()
+    const history1 = useHistory()
     const {id} = useParams()
     const [experiencedApplicant, setExperiencedApplicant] = useState({})
     const [applications, setApplications] = useState([])
@@ -86,7 +86,7 @@ const ExperiencedApplicantFormEditor = () => {
 
             <h2>Applications</h2>
             <button className="btn btn-primary"
-                    onClick={() => history.push("/applications/new")}>
+                    onClick={() => history1.push("/applications/new")}>
                 Add Application
             </button>
             <ul className="list-group">

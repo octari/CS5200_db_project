@@ -6,7 +6,7 @@ const {Link, useParams, useHistory} = window.ReactRouterDOM;
 
 const NewGradApplicantFormEditor = () => {
     const {id} = useParams()
-    const history = useHistory()
+    const history1 = useHistory()
     const [newGradApplicant, setNewGradApplicant] = useState({})
     const [applications, setApplications] = useState([])
     const [recruiterId, setRecruiterId] = useState()
@@ -91,7 +91,7 @@ const NewGradApplicantFormEditor = () => {
             <button className="btn btn-success" onClick={() => createNewGradApplicantForRecruiter(recruiterId,newGradApplicant)}>Create</button>
             <h2>Applications</h2>
             <button className="btn btn-primary"
-                    onClick={() => history.push("/applications/new")}>
+                    onClick={() => history1.push("/applications/new")}>
                 Add Application
             </button>
             <ul className="list-group">

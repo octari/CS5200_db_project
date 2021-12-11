@@ -24,7 +24,6 @@ const ApplicantList = () => {
                     applicants.map(applicant =>
                         <li className="list-group-item" key={applicant.id}>
                             <Link to={`/applicants/${applicant.id}`}>
-                                {applicant.id},
                             {applicant.firstName},
                             {applicant.lastName},
                             {applicant.email},
